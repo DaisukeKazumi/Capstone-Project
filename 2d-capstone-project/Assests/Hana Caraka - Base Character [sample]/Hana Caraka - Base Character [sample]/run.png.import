@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uhyacwm1b0ex"
-path="res://.godot/imported/jump.png-f17179433a16624177a855ee97496105.ctex"
+uid="uid://dqdy4umfrvg5l"
+path="res://.godot/imported/run.png-9e73819b941814260817e787cd09fe7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Code/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/jump.png"
-dest_files=["res://.godot/imported/jump.png-f17179433a16624177a855ee97496105.ctex"]
+source_file="res://Assests/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/run.png"
+dest_files=["res://.godot/imported/run.png-9e73819b941814260817e787cd09fe7c.ctex"]
 
 [params]
 

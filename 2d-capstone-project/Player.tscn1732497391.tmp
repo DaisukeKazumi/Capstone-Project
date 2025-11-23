@@ -337,7 +337,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Jump",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -465,8 +465,8 @@ script = ExtResource("1_kpjcp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_ctv73")
-animation = &"Jump"
-frame = 7
+animation = &"Teleport_End"
+frame = 4
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
