@@ -6,7 +6,7 @@ var double_click_threshold = 0.25  # seconds
 
 # Jump tracking
 var can_double_jump = false
-var is_jumping = false   # ✅ new flag to track jump state
+var is_jumping = false   # tracks jump state
 
 # Animation state
 var is_busy = false      # prevents overriding special animations
@@ -18,11 +18,14 @@ var can_teleport = true  # teleport cooldown flag
 # @onready var audio = $AudioStreamPlayer
 
 func _physics_process(delta):
-	var velocity: Vector2
-	
+	# Debug: show floor/busy/vertical velocity each physics frame
+	print("DEBUG: on_floor:", is_on_floor(), "is_busy:", is_busy, "velocity.y:", velocity.y)
+
 	# Gravity
 	if not is_on_floor():
 		velocity.y += Globals.gravity * delta
+	else:
+		velocity.y = 0  # reset when grounded
 	
 	# Movement input
 	var move_dir = 0
@@ -44,26 +47,28 @@ func _physics_process(delta):
 		velocity.x = move_dir * speed
 		anim.flip_h = move_dir < 0
 	elif not is_busy and not is_jumping:
-		# Reset run only when no movement at all
 		is_running = false
-		# Idle animations
 		if _low_health():
 			anim.play("Idle_lowhealth")
 		else:
 			anim.play("Idle")
+		velocity.x = 0
 	
-	# Jump
+	# Jump (immediate force, with debug)
 	if Input.is_action_just_pressed("Jump") and not is_busy:
+		print("DEBUG: Jump input detected; is_on_floor:", is_on_floor(), "is_busy:", is_busy)
 		if is_on_floor():
 			velocity.y = Globals.jump_force
 			can_double_jump = true
-			anim.play("Jump")
 			is_jumping = true
+			anim.play("Jump")
+			print("DEBUG: Applied jump force:", Globals.jump_force, "velocity.y now:", velocity.y)
 		elif can_double_jump and _is_double_click("Jump"):
 			velocity.y = Globals.jump_force
 			can_double_jump = false
-			anim.play("Jump")
 			is_jumping = true
+			anim.play("Jump")
+			print("DEBUG: Applied double-jump force:", Globals.jump_force, "velocity.y now:", velocity.y)
 	
 	# Attack
 	if Input.is_action_just_pressed("Attack") and not is_busy:
@@ -79,11 +84,10 @@ func _physics_process(delta):
 		_teleport_to_mouse()
 	
 	# Apply movement
-	self.velocity = velocity
 	move_and_slide()
 
 	# Landing animation
-	if is_on_floor() and velocity.y == 0 and is_jumping and not is_busy:
+	if is_on_floor() and is_jumping and not is_busy:
 		anim.play("Landing")
 		is_jumping = false
 
@@ -97,6 +101,10 @@ func _is_double_click(action: String) -> bool:
 		return true
 	last_key_time[action] = now
 	return false
+
+func _apply_jump_force():
+	# kept for compatibility but not used by current jump code
+	velocity.y = Globals.jump_force
 
 func _teleport_to_mouse():
 	if not can_teleport:
