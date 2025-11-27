@@ -263,7 +263,3 @@ position = Vector2(0.06819916, 0.9946804)
 shape = SubResource("CapsuleShape2D_byxd0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-offset = Vector2(0, -40)
-zoom = Vector2(4, 4)
