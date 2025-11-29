@@ -4,7 +4,7 @@ extends Node
 var gravity: float = 1500
 var walk_speed: float = 70
 var run_speed: float = 200
-var jump_force: float = -600
+var jump_force: float = -400 # orginal was -600
 
 # --- Global Gameplay Values ---
 var max_health: int = 100

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://odqbh6in1sd7"
-path="res://.godot/imported/char_blue.png-0068cd1decf70c3ff2ca8c12e8ffbdba.ctex"
+uid="uid://bekmnpi5xgnp0"
+path="res://.godot/imported/sign.png-dd33b18405b60eb262eac55bb6848b0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/oak_woods_v1.0/oak_woods_v1.0/character/char_blue.png"
-dest_files=["res://.godot/imported/char_blue.png-0068cd1decf70c3ff2ca8c12e8ffbdba.ctex"]
+source_file="res://level 3/oak_woods_v1.0/decorations/sign.png"
+dest_files=["res://.godot/imported/sign.png-dd33b18405b60eb262eac55bb6848b0f.ctex"]
 
 [params]
 

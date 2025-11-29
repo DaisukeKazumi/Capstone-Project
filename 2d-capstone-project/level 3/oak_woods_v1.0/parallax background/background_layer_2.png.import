@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cryh4jt2j82xi"
-path="res://.godot/imported/fence_2.png-4a54936a35133777ce2185cd52b23226.ctex"
+uid="uid://dgusqhgd7vb0k"
+path="res://.godot/imported/background_layer_2.png-16927ba8b87f3bcc100950c4c6636353.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/oak_woods_v1.0/oak_woods_v1.0/decorations/fence_2.png"
-dest_files=["res://.godot/imported/fence_2.png-4a54936a35133777ce2185cd52b23226.ctex"]
+source_file="res://level 3/oak_woods_v1.0/parallax background/background_layer_2.png"
+dest_files=["res://.godot/imported/background_layer_2.png-16927ba8b87f3bcc100950c4c6636353.ctex"]
 
 [params]
 

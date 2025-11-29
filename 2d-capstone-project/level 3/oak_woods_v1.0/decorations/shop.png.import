@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwkfbsxxfvecw"
-path="res://.godot/imported/sign.png-0b2b56d574fb03bccc9930df404e9514.ctex"
+uid="uid://1d6t0rhwltim"
+path="res://.godot/imported/shop.png-533c68c47a5081e3fb080f285bfa41b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/oak_woods_v1.0/oak_woods_v1.0/decorations/sign.png"
-dest_files=["res://.godot/imported/sign.png-0b2b56d574fb03bccc9930df404e9514.ctex"]
+source_file="res://level 3/oak_woods_v1.0/decorations/shop.png"
+dest_files=["res://.godot/imported/shop.png-533c68c47a5081e3fb080f285bfa41b8.ctex"]
 
 [params]
 
