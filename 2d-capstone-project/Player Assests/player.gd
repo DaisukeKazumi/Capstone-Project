@@ -2,23 +2,22 @@ extends CharacterBody2D
 
 # Double-click detection
 var last_key_time = {}
-var double_click_threshold = 0.25  # seconds
+var double_click_threshold = 0.25 
 
 # Jump tracking
 var can_double_jump = false
 var is_jumping = false   # tracks jump state
 
 # Animation state
-var is_busy = false      # prevents overriding special animations
-var is_running = false   # tracks run state
-var can_teleport = true  # teleport cooldown flag
+var is_busy = false    
+var is_running = false  
+var can_teleport = true 
 
 # References
 @onready var anim = $AnimatedSprite2D
 # @onready var audio = $AudioStreamPlayer
 
 func _physics_process(delta):
-	# Debug: show floor/busy/vertical velocity each physics frame
 	print("DEBUG: on_floor:", is_on_floor(), "is_busy:", is_busy, "velocity.y:", velocity.y)
 
 	# Gravity
@@ -54,7 +53,7 @@ func _physics_process(delta):
 			anim.play("Idle")
 		velocity.x = 0
 	
-	# Jump (immediate force, with debug)
+	# Jump (with debug for trouble shooting, doesn't like to work)
 	if Input.is_action_just_pressed("Jump") and not is_busy:
 		print("DEBUG: Jump input detected; is_on_floor:", is_on_floor(), "is_busy:", is_busy)
 		if is_on_floor():
@@ -103,12 +102,11 @@ func _is_double_click(action: String) -> bool:
 	return false
 
 func _apply_jump_force():
-	# kept for compatibility but not used by current jump code
 	velocity.y = Globals.jump_force
 
 func _teleport_to_mouse():
 	if not can_teleport:
-		return   # block teleport if still cooling down
+		return   
 
 	can_teleport = false
 	is_busy = true
@@ -132,5 +130,4 @@ func _teleport_to_mouse():
 	can_teleport = true
 
 func _low_health() -> bool:
-	# Placeholder: replace with actual health check
 	return false

@@ -1,6 +1,5 @@
-[gd_scene load_steps=29 format=3 uid="uid://c8xprtyjs278l"]
+[gd_scene load_steps=28 format=3 uid="uid://c8xprtyjs278l"]
 
-[ext_resource type="Script" uid="uid://di2c08lt2bphl" path="res://Player Assests/player.gd" id="1_n3h1k"]
 [ext_resource type="Texture2D" uid="uid://fjcd8m31sabm" path="res://Assets/free-villagers-sprite-sheets-pixel-art/3 Man/Man_attack.png" id="2_d667b"]
 [ext_resource type="Texture2D" uid="uid://di0jcjxgblqc1" path="res://Assets/free-villagers-sprite-sheets-pixel-art/3 Man/Man_death.png" id="3_1rqdn"]
 [ext_resource type="Texture2D" uid="uid://cxqxjnke748ol" path="res://Assets/free-villagers-sprite-sheets-pixel-art/3 Man/Man_hurt.png" id="4_yxpwv"]
@@ -182,7 +181,6 @@ radius = 5.9946804
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-0.06819916, -30.99468)
-script = ExtResource("1_n3h1k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_222x7")

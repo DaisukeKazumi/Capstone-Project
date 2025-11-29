@@ -1,6 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://dgkghibeh6fuq"]
 
-[ext_resource type="Script" uid="uid://di2c08lt2bphl" path="res://Player Assests/player.gd" id="1_ke2p2"]
+[ext_resource type="Script" uid="uid://dl7pc7we0tlrc" path="res://Level 2 Assets/child_NPC.gd" id="1_yumgt"]
 [ext_resource type="Texture2D" uid="uid://h81vuutijvts" path="res://Assets/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/idle.png" id="2_piihw"]
 [ext_resource type="Texture2D" uid="uid://uhyacwm1b0ex" path="res://Assets/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/jump.png" id="3_33cgn"]
 [ext_resource type="Texture2D" uid="uid://dqdy4umfrvg5l" path="res://Assets/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/run.png" id="4_6qrxh"]
@@ -252,7 +252,7 @@ height = 11.989361
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-0.06819916, -30.99468)
-script = ExtResource("1_ke2p2")
+script = ExtResource("1_yumgt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_8ma4f")

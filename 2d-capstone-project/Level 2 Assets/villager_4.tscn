@@ -1,6 +1,5 @@
-[gd_scene load_steps=29 format=3 uid="uid://c4dsjkpp51wi7"]
+[gd_scene load_steps=28 format=3 uid="uid://c4dsjkpp51wi7"]
 
-[ext_resource type="Script" uid="uid://di2c08lt2bphl" path="res://Player Assests/player.gd" id="1_mauyw"]
 [ext_resource type="Texture2D" uid="uid://c7ebcgu2tqeyt" path="res://Assets/free-villagers-sprite-sheets-pixel-art/4 Woman/Woman_attack.png" id="2_41n27"]
 [ext_resource type="Texture2D" uid="uid://cb8w6p1j6bhd8" path="res://Assets/free-villagers-sprite-sheets-pixel-art/4 Woman/Woman_death.png" id="3_txpkk"]
 [ext_resource type="Texture2D" uid="uid://dpccr2y0vdai7" path="res://Assets/free-villagers-sprite-sheets-pixel-art/4 Woman/Woman_hurt.png" id="4_bhgos"]
@@ -183,7 +182,6 @@ height = 28.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-0.06819916, -30.99468)
-script = ExtResource("1_mauyw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_vvgb0")

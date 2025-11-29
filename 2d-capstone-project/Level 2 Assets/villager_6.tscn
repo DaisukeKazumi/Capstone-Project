@@ -1,6 +1,5 @@
-[gd_scene load_steps=29 format=3 uid="uid://if4q6jdwrw7i"]
+[gd_scene load_steps=28 format=3 uid="uid://if4q6jdwrw7i"]
 
-[ext_resource type="Script" uid="uid://di2c08lt2bphl" path="res://Player Assests/player.gd" id="1_wt4o2"]
 [ext_resource type="Texture2D" uid="uid://b5b5j417yx1vy" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_walk.png" id="2_4iykh"]
 [ext_resource type="Texture2D" uid="uid://bbfsmj7jxnvir" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_death.png" id="2_cc0vd"]
 [ext_resource type="Texture2D" uid="uid://bwewfdmll2eqo" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_attack.png" id="2_wt4o2"]
@@ -183,12 +182,12 @@ height = 28.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-0.06819916, -30.99468)
-script = ExtResource("1_wt4o2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_k7hjn")
 animation = &"Walk"
-frame_progress = 0.46437153
+frame = 4
+frame_progress = 0.56550354
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-11.931801, 7.9946804)
