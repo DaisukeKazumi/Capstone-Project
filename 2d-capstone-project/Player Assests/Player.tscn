@@ -1,8 +1,7 @@
-[gd_scene load_steps=62 format=3 uid="uid://cvhym3rorbnl6"]
+[gd_scene load_steps=59 format=3 uid="uid://cvhym3rorbnl6"]
 
 [ext_resource type="Script" uid="uid://di2c08lt2bphl" path="res://Player Assests/player.gd" id="1_k8v6v"]
 [ext_resource type="Texture2D" uid="uid://cdkj5dyumb46i" path="res://Assets/Character/AnimationSheet_Character.png" id="2_j3q1u"]
-[ext_resource type="Texture2D" uid="uid://cja5hb1k3xw63" path="res://icon.svg" id="3_qn2rn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
 atlas = ExtResource("2_j3q1u")
@@ -439,11 +438,6 @@ animations = [{
 radius = 6.0
 height = 24.0
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e80uo"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxr5p"]
-size = Vector2(289, 20)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -466,15 +460,3 @@ shape = SubResource("CapsuleShape2D_xhfnw")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 offset = Vector2(0, -20)
 zoom = Vector2(5, 5)
-
-[node name="Floor" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_e80uo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(0.5, 27)
-shape = SubResource("RectangleShape2D_cxr5p")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(3.5527137e-15, 26.999998)
-scale = Vector2(2.2578125, 0.1640625)
-texture = ExtResource("3_qn2rn")
