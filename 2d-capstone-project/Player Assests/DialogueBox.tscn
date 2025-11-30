@@ -5,8 +5,10 @@
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -17.0
+offset_top = -53.0
+offset_right = 23.0
+offset_bottom = -13.0
 script = ExtResource("1_jwvy0")
 
 [node name="Panel" type="Panel" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ci7ofy7e6nlaa"]
+[gd_scene load_steps=31 format=3 uid="uid://ci7ofy7e6nlaa"]
 
 [ext_resource type="Script" uid="uid://d2jmpd6rak51q" path="res://Level 2 Assets/villager_1.gd" id="1_0b40p"]
 [ext_resource type="Texture2D" uid="uid://coy8iiw4gmjnr" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_attack.png" id="2_0b40p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bcoy4ixvbkghg" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_hurt.png" id="4_mwbqk"]
 [ext_resource type="Texture2D" uid="uid://dn8fnv1bfahix" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_idle.png" id="5_tmiku"]
 [ext_resource type="Texture2D" uid="uid://q5jcfrlldkrk" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_walk.png" id="6_v0rw1"]
+[ext_resource type="PackedScene" uid="uid://dbhmf5rhh2tqe" path="res://Player Assests/DialogueBox.tscn" id="7_h7hiy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o33gb"]
 atlas = ExtResource("2_0b40p")
@@ -203,3 +204,5 @@ shape = SubResource("CapsuleShape2D_o33gb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 position = Vector2(0.06819916, -0.0053195953)
 shape = SubResource("CircleShape2D_0b40p")
+
+[node name="DialogueBox" parent="." instance=ExtResource("7_h7hiy")]

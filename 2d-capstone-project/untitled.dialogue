@@ -1,0 +1,6 @@
+~ start
+???: [[Hi|Hello|Hey]] there.
+Player: Hello, who are you?
+Finn: My name is Finn. Don't you remember me?
+Player: [speed=0.2]No...[wait=1] Who are you?
+=> END
