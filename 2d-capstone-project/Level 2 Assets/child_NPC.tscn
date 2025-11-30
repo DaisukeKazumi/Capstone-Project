@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dgkghibeh6fuq"]
+[gd_scene load_steps=39 format=3 uid="uid://dgkghibeh6fuq"]
 
 [ext_resource type="Script" uid="uid://dl7pc7we0tlrc" path="res://Level 2 Assets/child_NPC.gd" id="1_yumgt"]
 [ext_resource type="Texture2D" uid="uid://h81vuutijvts" path="res://Assets/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/idle.png" id="2_piihw"]
@@ -244,6 +244,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yumgt"]
+radius = 34.780983
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_byxd0"]
 radius = 5.9946804
 height = 11.989361
@@ -258,8 +261,13 @@ script = ExtResource("1_yumgt")
 sprite_frames = SubResource("SpriteFrames_8ma4f")
 animation = &"Running_right"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_yumgt")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0.06819916, 0.9946804)
 shape = SubResource("CapsuleShape2D_byxd0")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]

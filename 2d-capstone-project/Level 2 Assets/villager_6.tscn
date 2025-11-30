@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://if4q6jdwrw7i"]
+[gd_scene load_steps=29 format=3 uid="uid://if4q6jdwrw7i"]
 
 [ext_resource type="Texture2D" uid="uid://b5b5j417yx1vy" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_walk.png" id="2_4iykh"]
 [ext_resource type="Texture2D" uid="uid://bbfsmj7jxnvir" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_death.png" id="2_cc0vd"]
@@ -178,6 +178,9 @@ animations = [{
 radius = 5.0
 height = 28.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cc0vd"]
+radius = 54.230988
+
 [node name="Villager6" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -195,3 +198,9 @@ shape = SubResource("CapsuleShape2D_kugkq")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 position = Vector2(0.06819916, -0.0053195953)
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(0.06819916, -0.0053195953)
+shape = SubResource("CircleShape2D_cc0vd")

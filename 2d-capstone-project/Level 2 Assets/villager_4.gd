@@ -22,9 +22,27 @@ var extortion_dialogue: String = "(She side-eyes you, sighs, and hands you a few
 # --- State ---
 var interaction_count: int = 0
 var reward_given: bool = false
+var player_in_range: bool = false
+
+# --- Setup ---
+func _ready() -> void:
+	$Area2D.body_entered.connect(_on_body_entered)
+	$Area2D.body_exited.connect(_on_body_exited)
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		player_in_range = true
+
+func _on_body_exited(body: Node) -> void:
+	if body.is_in_group("Player"):
+		player_in_range = false
 
 # --- Interaction ---
-func interact():
+func _process(delta: float) -> void:
+	if player_in_range and Input.is_action_just_pressed("interact"):
+		interact()
+
+func interact() -> void:
 	interaction_count += 1
 	
 	if interaction_count <= 5:
@@ -42,12 +60,12 @@ func interact():
 		reward_given = true
 	else:
 		# After reward: she ignores further interactions
-		print(npc_name, " ignores you now.")
+		DialogueBox.show_text(npc_name, ["(She ignores you now.)"])
 
 # --- Helpers ---
-func _show_dialogue(line: String):
-	print(npc_name, " says: ", line)
+func _show_dialogue(line: String) -> void:
+	DialogueBox.show_text(npc_name, [line])
 
-func _give_reward():
-	print(npc_name, " gives you 10 gold coins!")
+func _give_reward() -> void:
+	DialogueBox.show_text(npc_name, ["You received 10 gold coins!"])
 	Globals.player_gold += 10

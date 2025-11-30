@@ -23,9 +23,27 @@ var irrelevant_dialogue: String = "(She stares at you with indifference, as if y
 
 # --- State ---
 var interaction_count: int = 0
+var player_in_range: bool = false
+
+# --- Setup ---
+func _ready() -> void:
+	$Area2D.body_entered.connect(_on_body_entered)
+	$Area2D.body_exited.connect(_on_body_exited)
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		player_in_range = true
+
+func _on_body_exited(body: Node) -> void:
+	if body.is_in_group("Player"):
+		player_in_range = false
 
 # --- Interaction ---
-func interact():
+func _process(delta: float) -> void:
+	if player_in_range and Input.is_action_just_pressed("interact"):
+		interact()
+
+func interact() -> void:
 	interaction_count += 1
 	
 	if interaction_count <= 5:
@@ -41,6 +59,5 @@ func interact():
 		_show_dialogue(irrelevant_dialogue)
 
 # --- Helper ---
-func _show_dialogue(line: String):
-	print(npc_name, " says: ", line)
-	# Replace with your dialogue UI system
+func _show_dialogue(line: String) -> void:
+	DialogueBox.show_text(npc_name, [line])

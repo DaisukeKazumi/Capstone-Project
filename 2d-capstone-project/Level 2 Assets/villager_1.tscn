@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ci7ofy7e6nlaa"]
+[gd_scene load_steps=30 format=3 uid="uid://ci7ofy7e6nlaa"]
 
 [ext_resource type="Script" uid="uid://d2jmpd6rak51q" path="res://Level 2 Assets/villager_1.gd" id="1_0b40p"]
 [ext_resource type="Texture2D" uid="uid://coy8iiw4gmjnr" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_attack.png" id="2_0b40p"]
@@ -179,6 +179,9 @@ animations = [{
 radius = 7.0
 height = 28.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0b40p"]
+radius = 60.00833
+
 [node name="Villager1" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -194,3 +197,9 @@ position = Vector2(-11.931801, 8.99468)
 shape = SubResource("CapsuleShape2D_o33gb")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(0.06819916, -0.0053195953)
+shape = SubResource("CircleShape2D_0b40p")

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Double-click detection
 var last_key_time = {}
-var double_click_threshold = 0.25 
+var double_click_threshold = 0.25  
 
 # Jump tracking
 var can_double_jump = false
@@ -11,14 +11,13 @@ var is_jumping = false   # tracks jump state
 # Animation state
 var is_busy = false    
 var is_running = false  
-var can_teleport = true 
+var can_teleport = true  
 
 # References
 @onready var anim = $AnimatedSprite2D
 # @onready var audio = $AudioStreamPlayer
 
 func _physics_process(delta):
-	print("DEBUG: on_floor:", is_on_floor(), "is_busy:", is_busy, "velocity.y:", velocity.y)
 
 	# Gravity
 	if not is_on_floor():
@@ -26,14 +25,14 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0  # reset when grounded
 	
-	# Movement input
+	# Movement input (works both on ground and in air)
 	var move_dir = 0
 	if Input.is_action_pressed("move_left"):
 		move_dir -= 1
 	if Input.is_action_pressed("move_right"):
 		move_dir += 1
 	
-	if move_dir != 0 and not is_busy and not is_jumping:
+	if move_dir != 0 and not is_busy:
 		var direction_action = "move_left" if move_dir < 0 else "move_right"
 
 		# Detect double‑tap to enable running
@@ -41,33 +40,39 @@ func _physics_process(delta):
 			is_running = true
 
 		var speed = Globals.run_speed if is_running else Globals.walk_speed
-		anim.play("Run" if is_running else "Walk")
-		
 		velocity.x = move_dir * speed
 		anim.flip_h = move_dir < 0
-	elif not is_busy and not is_jumping:
-		is_running = false
-		if _low_health():
-			anim.play("Idle_lowhealth")
-		else:
-			anim.play("Idle")
-		velocity.x = 0
+
+		# Play run/walk animations only if grounded
+		if is_on_floor() and not is_jumping:
+			anim.play("Run" if is_running else "Walk")
+		elif not is_on_floor() and is_jumping:
+			# Optional: directional jump animations
+			if move_dir < 0:
+				anim.play("Jump_Left")
+			elif move_dir > 0:
+				anim.play("Jump_Right")
+	else:
+		if is_on_floor() and not is_busy and not is_jumping:
+			is_running = false
+			if _low_health():
+				anim.play("Idle_lowhealth")
+			else:
+				anim.play("Idle")
+			velocity.x = 0
 	
-	# Jump (with debug for trouble shooting, doesn't like to work)
+	# Jump
 	if Input.is_action_just_pressed("Jump") and not is_busy:
-		print("DEBUG: Jump input detected; is_on_floor:", is_on_floor(), "is_busy:", is_busy)
 		if is_on_floor():
 			velocity.y = Globals.jump_force
 			can_double_jump = true
 			is_jumping = true
 			anim.play("Jump")
-			print("DEBUG: Applied jump force:", Globals.jump_force, "velocity.y now:", velocity.y)
 		elif can_double_jump and _is_double_click("Jump"):
 			velocity.y = Globals.jump_force
 			can_double_jump = false
 			is_jumping = true
 			anim.play("Jump")
-			print("DEBUG: Applied double-jump force:", Globals.jump_force, "velocity.y now:", velocity.y)
 	
 	# Attack
 	if Input.is_action_just_pressed("Attack") and not is_busy:

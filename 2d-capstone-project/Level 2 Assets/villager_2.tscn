@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dcv5rdgtglmut"]
+[gd_scene load_steps=29 format=3 uid="uid://dcv5rdgtglmut"]
 
 [ext_resource type="Texture2D" uid="uid://ts15ma7qt051" path="res://Assets/free-villagers-sprite-sheets-pixel-art/2 Old_woman/Old_woman_attack.png" id="2_m7igu"]
 [ext_resource type="Texture2D" uid="uid://c80v6rjldayy8" path="res://Assets/free-villagers-sprite-sheets-pixel-art/2 Old_woman/Old_woman_death.png" id="3_afqyy"]
@@ -178,6 +178,9 @@ animations = [{
 radius = 5.9946804
 height = 28.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gir3c"]
+radius = 54.230988
+
 [node name="Villager2" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -192,3 +195,9 @@ position = Vector2(-12.931801, 8.99468)
 shape = SubResource("CapsuleShape2D_gwb6y")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(0.06819916, -0.0053195953)
+shape = SubResource("CircleShape2D_gir3c")

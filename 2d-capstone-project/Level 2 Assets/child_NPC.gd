@@ -20,35 +20,49 @@ var quest_given: bool = false
 var quest_completed: bool = false
 
 # --- References ---
-@onready var anim = $AnimatedSprite2D
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+var player_in_range: bool = false
+
+# --- Setup ---
+func _ready() -> void:
+	$Area2D.body_entered.connect(_on_body_entered)
+	$Area2D.body_exited.connect(_on_body_exited)
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		player_in_range = true
+
+func _on_body_exited(body: Node) -> void:
+	if body.is_in_group("Player"):
+		player_in_range = false
 
 # --- Interaction ---
-func interact():
+func _process(delta: float) -> void:
+	if player_in_range and Input.is_action_just_pressed("interact"):
+		interact()
+
+func interact() -> void:
 	if not quest_given:
 		_show_dialogue(dialogue_intro)
 		_give_quest()
 	elif quest_given and not quest_completed:
-		print(npc_name, ": Please defend the village before we can celebrate!")
+		DialogueBox.show_text(npc_name, ["Please defend the village before we can celebrate!"])
 	elif quest_completed:
 		_show_dialogue(dialogue_after_quest)
 		_give_reward()
 		_reveal_player_hint()
 
 # --- Helpers ---
-func _show_dialogue(lines: Array[String]):
-	for line in lines:
-		print(npc_name, " says: ", line)
-		# Replace with your dialogue UI system
-		await get_tree().create_timer(1.0).timeout
+func _show_dialogue(lines: Array[String]) -> void:
+	# Show dialogue in DialogueBox singleton
+	DialogueBox.show_text(npc_name, lines)
 
-func _give_quest():
-	print(npc_name, " gives quest: ", quest_id)
-	Globals.active_quests.append(quest_id)
+func _give_quest() -> void:
+	Globals.add_quest(quest_id)
 	quest_given = true
 
-func _give_reward():
-	print(npc_name, " gives you a piece of cake!") 
-	Globals.inventory.append("Cake")  
+func _give_reward() -> void:
+	Globals.add_item("Cake")
 
-func _reveal_player_hint():
-	print(npc_name, " whispers: 'You’re not just anyone... you’re part of something greater.'")
+func _reveal_player_hint() -> void:
+	DialogueBox.show_text(npc_name, ["You’re not just anyone... you’re part of something greater."])

@@ -440,7 +440,7 @@ height = 24.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 texture_filter = 1
 position = Vector2(-0.06819916, -30.99468)
 script = ExtResource("1_k8v6v")

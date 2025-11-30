@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d0g2a27wh2f6r"]
+[gd_scene load_steps=30 format=3 uid="uid://d0g2a27wh2f6r"]
 
 [ext_resource type="Script" uid="uid://di2c08lt2bphl" path="res://Player Assests/player.gd" id="1_05gde"]
 [ext_resource type="Texture2D" uid="uid://cehmias3fqj6w" path="res://Assets/free-villagers-sprite-sheets-pixel-art/5 Boy/Boy_attack.png" id="2_jnkna"]
@@ -179,6 +179,9 @@ animations = [{
 radius = 5.0
 height = 28.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_05gde"]
+radius = 54.230988
+
 [node name="Villager5" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -197,3 +200,9 @@ shape = SubResource("CapsuleShape2D_gpjy5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 position = Vector2(0.06819916, -0.0053195953)
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(0.06819916, -0.0053195953)
+shape = SubResource("CircleShape2D_05gde")
