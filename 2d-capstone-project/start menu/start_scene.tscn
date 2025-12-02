@@ -1,3 +1,86 @@
-[gd_scene format=3 uid="uid://ci36tiiunoxvb"]
+[gd_scene load_steps=6 format=3 uid="uid://ci36tiiunoxvb"]
+
+[ext_resource type="Texture2D" uid="uid://di1gfr0ln7vak" path="res://Assets/Sky/New free backgrounds part2/background 4/1.png" id="1_oo56u"]
+[ext_resource type="Texture2D" uid="uid://cocq6nmgesy1j" path="res://Assets/Sky/New free backgrounds part2/background 2/3.png" id="3_45f66"]
+[ext_resource type="Texture2D" uid="uid://bh5wkv3a0osw7" path="res://Assets/Sky/New free backgrounds part2/background 2/5.png" id="4_m05ik"]
+[ext_resource type="FontFile" uid="uid://wdc33m0o17h0" path="res://Assets/Fonts/m5x7.ttf" id="5_oo56u"]
+[ext_resource type="Texture2D" uid="uid://v22wcihduf25" path="res://Assets/Sky/New free backgrounds part2/background 2/4.png" id="5_xj183"]
 
 [node name="start_scene" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 5
+
+[node name="1" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(576.00006, 319.00003)
+scale = Vector2(2.0154324, 2.0154321)
+texture = ExtResource("1_oo56u")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(10, 0)
+repeat_times = 5
+
+[node name="3" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(576, 317)
+scale = Vector2(2.0185184, 2.0185184)
+texture = ExtResource("3_45f66")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-11, 0)
+repeat_times = 5
+
+[node name="4" type="Sprite2D" parent="Parallax2D3"]
+position = Vector2(576, 327)
+scale = Vector2(2.0391586, 2.0391588)
+texture = ExtResource("5_xj183")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(9, 0)
+repeat_times = 5
+
+[node name="5" type="Sprite2D" parent="Parallax2D4"]
+position = Vector2(578.00006, 327.00003)
+scale = Vector2(2.0127313, 2.0127313)
+texture = ExtResource("4_m05ik")
+
+[node name="game_name" type="Label" parent="."]
+offset_left = 370.0
+offset_top = 137.0
+offset_right = 727.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_oo56u")
+theme_override_font_sizes/font_size = 100
+text = "GAME NAME"
+
+[node name="play" type="Button" parent="."]
+offset_left = 510.0
+offset_top = 282.0
+offset_right = 578.0
+offset_bottom = 322.0
+theme_override_fonts/font = ExtResource("5_oo56u")
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+
+[node name="about" type="Button" parent="."]
+offset_left = 504.0
+offset_top = 360.0
+offset_right = 587.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("5_oo56u")
+theme_override_font_sizes/font_size = 40
+text = "ABOUT"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 514.0
+offset_top = 440.0
+offset_right = 582.0
+offset_bottom = 480.0
+theme_override_fonts/font = ExtResource("5_oo56u")
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
