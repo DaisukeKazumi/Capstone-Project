@@ -2,26 +2,28 @@
 
 [ext_resource type="Script" uid="uid://ty650cs1m7xk" path="res://Player Assests/dialogue_box.gd" id="1_jwvy0"]
 
-[node name="DialogueBox" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -17.0
-offset_top = -53.0
-offset_right = 23.0
-offset_bottom = -13.0
+[node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_jwvy0")
 
+[node name="Button" type="Button" parent="."]
+offset_right = 44.0
+offset_bottom = 42.0
+
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -204.0
+offset_right = -7.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+text = "Hi"
