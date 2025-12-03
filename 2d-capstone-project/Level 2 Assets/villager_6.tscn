@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://if4q6jdwrw7i"]
+[gd_scene load_steps=30 format=3 uid="uid://if4q6jdwrw7i"]
 
+[ext_resource type="Script" uid="uid://di4a4avm1oueo" path="res://Level 2 Assets/villager_6.gd" id="1_wt4o2"]
 [ext_resource type="Texture2D" uid="uid://b5b5j417yx1vy" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_walk.png" id="2_4iykh"]
 [ext_resource type="Texture2D" uid="uid://bbfsmj7jxnvir" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_death.png" id="2_cc0vd"]
 [ext_resource type="Texture2D" uid="uid://bwewfdmll2eqo" path="res://Assets/free-villagers-sprite-sheets-pixel-art/6 Girl/Girl_attack.png" id="2_wt4o2"]
@@ -185,6 +186,7 @@ radius = 54.230988
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-0.06819916, -30.99468)
+script = ExtResource("1_wt4o2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_k7hjn")
