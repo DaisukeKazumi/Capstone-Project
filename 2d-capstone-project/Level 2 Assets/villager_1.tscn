@@ -204,3 +204,7 @@ shape = SubResource("CapsuleShape2D_o33gb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 position = Vector2(0.06819916, 6.9946804)
 shape = SubResource("CircleShape2D_0b40p")
+
+[node name="InteractionTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 5.0
+one_shot = true

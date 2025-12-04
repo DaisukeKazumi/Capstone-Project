@@ -8,6 +8,9 @@ var current_index: int = 0
 var current_npc: String = ""
 var is_story_npc: bool = false
 
+func _ready() -> void:
+	visible = false
+
 func show_text(npc_name: String, lines: Array[String], story_mode: bool = false) -> void:
 	# Called by NPC scripts
 	current_npc = npc_name
@@ -37,3 +40,12 @@ func _process(delta: float) -> void:
 	# Allow pressing E to advance dialogue for story NPCs
 	if visible and is_story_npc and Input.is_action_just_pressed("interact"):
 		next_line()
+
+# --- New helper ---
+func hide_text() -> void:
+	# Called when player leaves NPC range
+	visible = false
+	current_lines.clear()
+	current_index = 0
+	current_npc = ""
+	is_story_npc = false
