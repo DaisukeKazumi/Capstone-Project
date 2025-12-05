@@ -1,3 +1,109 @@
-[gd_scene format=3 uid="uid://dh50g6p7wkh5w"]
+[gd_scene load_steps=15 format=3 uid="uid://dh50g6p7wkh5w"]
+
+[ext_resource type="Texture2D" uid="uid://cwe0yjvna16ol" path="res://Assets/miner/miner_idle.png" id="1_3y8a3"]
+[ext_resource type="Script" uid="uid://schypwupl04p" path="res://Level 1 Assests/MinerNPC.gd" id="1_fl6om"]
+[ext_resource type="Texture2D" uid="uid://bat04pahu2w2h" path="res://Assets/miner/miner_run.png" id="2_fl6om"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0psmd"]
+atlas = ExtResource("1_3y8a3")
+region = Rect2(0, 0, 23, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhrea"]
+atlas = ExtResource("1_3y8a3")
+region = Rect2(23, 0, 23, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpclc"]
+atlas = ExtResource("1_3y8a3")
+region = Rect2(46, 0, 23, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiqy3"]
+atlas = ExtResource("1_3y8a3")
+region = Rect2(69, 0, 23, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxf5x"]
+atlas = ExtResource("2_fl6om")
+region = Rect2(0, 0, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdrsq"]
+atlas = ExtResource("2_fl6om")
+region = Rect2(24, 0, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_worxp"]
+atlas = ExtResource("2_fl6om")
+region = Rect2(48, 0, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up6t3"]
+atlas = ExtResource("2_fl6om")
+region = Rect2(72, 0, 24, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7pq20"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0psmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhrea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpclc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiqy3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxf5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdrsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_worxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up6t3")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phss1"]
+radius = 7.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jp2o"]
+radius = 60.00833
 
 [node name="MinerNpc" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-0.06819916, -30.99468)
+script = ExtResource("1_fl6om")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(1.0681992, 13.99468)
+sprite_frames = SubResource("SpriteFrames_7pq20")
+animation = &"Walk"
+frame_progress = 0.61181486
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1.0681992, 13.99468)
+shape = SubResource("CapsuleShape2D_phss1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(1.0681992, 13.99468)
+shape = SubResource("CircleShape2D_4jp2o")
+
+[node name="InteractionTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 5.0
+one_shot = true
