@@ -47,7 +47,7 @@ func _physics_process(delta):
 		if is_on_floor() and not is_jumping:
 			anim.play("Run" if is_running else "Walk")
 		elif not is_on_floor() and is_jumping:
-			# Optional: directional jump animations
+			# directional jump animations
 			if move_dir < 0:
 				anim.play("Jump_Left")
 			elif move_dir > 0:
