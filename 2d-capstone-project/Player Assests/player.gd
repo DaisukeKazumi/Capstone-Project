@@ -1,5 +1,11 @@
 extends CharacterBody2D
 
+# --- Player Stats ---
+var base_health: float = 100.0
+var current_health: float = base_health
+var attack_power: float = 10.0
+var defense: float = 5.0
+
 # Double-click detection
 var last_key_time = {}
 var double_click_threshold = 0.25  
@@ -18,14 +24,13 @@ var can_teleport = true
 # @onready var audio = $AudioStreamPlayer
 
 func _physics_process(delta):
-
 	# Gravity
 	if not is_on_floor():
 		velocity.y += Globals.gravity * delta
 	else:
 		velocity.y = 0  # reset when grounded
 	
-	# Movement input (works both on ground and in air)
+	# Movement input
 	var move_dir = 0
 	if Input.is_action_pressed("move_left"):
 		move_dir -= 1
@@ -43,11 +48,9 @@ func _physics_process(delta):
 		velocity.x = move_dir * speed
 		anim.flip_h = move_dir < 0
 
-		# Play run/walk animations only if grounded
 		if is_on_floor() and not is_jumping:
 			anim.play("Run" if is_running else "Walk")
 		elif not is_on_floor() and is_jumping:
-			# directional jump animations
 			if move_dir < 0:
 				anim.play("Jump_Left")
 			elif move_dir > 0:
@@ -96,8 +99,27 @@ func _physics_process(delta):
 		is_jumping = false
 
 
-# --- Helper Functions ---
+# --- Reward Consumption ---
+func consume_reward(item_name: String) -> void:
+	match item_name:
+		"Cake":
+			base_health *= 1.5
+			current_health = base_health
+			DialogueBox.show_text("System", ["Cake has been consumed — Your health increased by 1.5x!"])
 
+		"Defense Charm":
+			defense *= 1.5
+			DialogueBox.show_text("System", ["Defense Charm has been consumed — Your defense increased by 50%!"])
+
+		"Salted Food":
+			attack_power *= 1.2
+			DialogueBox.show_text("System", ["Salted Food has been consumed — Your attack power increased by 20%!"])
+
+		_:
+			DialogueBox.show_text("System", ["Unknown reward consumed."])
+
+
+# --- Helper Functions ---
 func _is_double_click(action: String) -> bool:
 	var now = Time.get_ticks_msec() / 1000.0
 	if last_key_time.has(action) and now - last_key_time[action] <= double_click_threshold:
@@ -112,7 +134,6 @@ func _apply_jump_force():
 func _teleport_to_mouse():
 	if not can_teleport:
 		return   
-
 	can_teleport = false
 	is_busy = true
 
@@ -129,10 +150,26 @@ func _teleport_to_mouse():
 	await anim.animation_finished
 
 	is_busy = false
-
-	# enforce cooldown
 	await get_tree().create_timer(Globals.teleport_cooldown).timeout
 	can_teleport = true
 
 func _low_health() -> bool:
-	return false
+	return current_health < base_health * 0.3
+
+
+# --- Visual Feedback ---
+func _show_feedback(message: String) -> void:
+	# Simple example: print to console
+	print(message)
+
+	# Example: show floating text above player
+	var label = Label.new()
+	label.text = message
+	label.add_theme_color_override("font_color", Color(1, 1, 0)) # yellow
+	get_parent().add_child(label)
+	label.global_position = global_position + Vector2(0, -32)
+
+	# Animate fade-out
+	var tween = get_tree().create_tween()
+	tween.tween_property(label, "modulate:a", 0.0, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_callback(Callable(label, "queue_free"))

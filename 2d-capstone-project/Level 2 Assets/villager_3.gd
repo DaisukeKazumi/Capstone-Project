@@ -29,8 +29,11 @@ func _handle_dialogue() -> void:
 		_show_dialogue(line)
 	elif interaction_count == 11 and not reward_given:
 		_show_dialogue(reward_dialogue)
-		DialogueBox.show_text(npc_name, ["You received Salted Food!"])
-		Globals.inventory.append("Salted Food")
+		DialogueBox.show_text(npc_name, ["Salted Food has been consumed — Your attack power increased by 20%!"])
+
+		var player = get_tree().get_nodes_in_group("Player")[0]
+		player.consume_reward("Salted Food")
 		reward_given = true
+
 	elif interaction_count > 11:
 		_show_dialogue(exclaim_dialogue)

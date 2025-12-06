@@ -1,13 +1,13 @@
-extends Node2D
+extends "res://Code/QuestGiverBase.gd"
 
-# --- NPC Properties ---
-var npc_name: String = "Child"
+# --- Child-specific dialogue pools ---
 var dialogue_intro: Array[String] = [
 	"Today is my birthday...",
 	"But the village is under attack!",
 	"Please, defend us so the celebration isn’t ruined!"
 ]
 
+var quest_dialogue: String = "Please, you must defend the village before we can celebrate!"
 var dialogue_after_quest: Array[String] = [
 	"You saved us!",
 	"Thank you for protecting the village.",
@@ -15,54 +15,65 @@ var dialogue_after_quest: Array[String] = [
 	"And... I think I know something about you..."
 ]
 
+var idle_dialogue: String = "I have nothing more to ask of you."
+
+# --- Quest details ---
 var quest_id: String = "defend_village"
-var quest_given: bool = false
-var quest_completed: bool = false
+var quest_item: String = "Enemy Defeated"
+var quest_amount: int = 1
 
-# --- References ---
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-var player_in_range: bool = false
+# --- Dialogue progression state ---
+var intro_index: int = 0   # tracks which intro line we’re on
 
-# --- Setup ---
-func _ready() -> void:
-	$Area2D.body_entered.connect(_on_body_entered)
-	$Area2D.body_exited.connect(_on_body_exited)
+func _handle_dialogue() -> void:
+	# 1. Intro dialogues first
+	if not quest_given and intro_index < dialogue_intro.size():
+		_show_dialogue(dialogue_intro[intro_index])
+		intro_index += 1
+		return
 
-func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
-		player_in_range = true
+	# 2. After all intros, give quest dialogue + description + confirmation
+	if not quest_given and intro_index >= dialogue_intro.size():
+		var quest_text = "Quest: Defend the village from attackers"
+		var quest_received = "Quest received: Protect village"
+		_show_dialogue_array([quest_dialogue, quest_text, quest_received])
 
-func _on_body_exited(body: Node) -> void:
-	if body.is_in_group("Player"):
-		player_in_range = false
+		quest_given = true
+		QuestManager.start_quest(quest_id, quest_text)
 
-# --- Interaction ---
-func _process(delta: float) -> void:
-	if player_in_range and Input.is_action_just_pressed("interact"):
-		interact()
+		# Keep quest text visible for 15 seconds
+		var timer := get_tree().create_timer(15.0)
+		timer.timeout.connect(func():
+			_clear_dialogue()
+		)
+		return
 
-func interact() -> void:
-	if not quest_given:
-		_show_dialogue(dialogue_intro)
-		_give_quest()
-	elif quest_given and not quest_completed:
-		DialogueBox.show_text(npc_name, ["Please defend the village before we can celebrate!"])
-	elif quest_completed:
-		_show_dialogue(dialogue_after_quest)
+	# 3. Quest reminders until completion
+	if quest_given and not quest_completed:
+		if Globals.inventory.count(quest_item) >= quest_amount:
+			quest_completed = true
+			_show_dialogue("You did it! The village is safe.")
+			QuestManager.complete_quest(quest_id)
+		else:
+			_show_dialogue("Please defend the village before we can celebrate!")
+		return
+
+	# 4. After completion
+	if quest_completed:
+		var line = dialogue_after_quest[randi() % dialogue_after_quest.size()]
+		_show_dialogue(line)
 		_give_reward()
 		_reveal_player_hint()
+	else:
+		_show_dialogue(idle_dialogue)
+
 
 # --- Helpers ---
-func _show_dialogue(lines: Array[String]) -> void:
-	# Show dialogue in DialogueBox singleton
+func _show_dialogue_array(lines: Array[String]) -> void:
 	DialogueBox.show_text(npc_name, lines)
-
-func _give_quest() -> void:
-	Globals.add_quest(quest_id)
-	quest_given = true
 
 func _give_reward() -> void:
 	Globals.add_item("Cake")
 
 func _reveal_player_hint() -> void:
-	DialogueBox.show_text(npc_name, ["You’re not just anyone... you’re part of something greater."])
+	_show_dialogue("You’re not just anyone... you’re part of something greater.")

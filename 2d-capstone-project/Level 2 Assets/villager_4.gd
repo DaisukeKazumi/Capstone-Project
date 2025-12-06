@@ -24,7 +24,9 @@ func _handle_dialogue() -> void:
 		_show_dialogue(irritated_dialogues[randi() % irritated_dialogues.size()])
 	elif interaction_count > 10 and not reward_given:
 		_show_dialogue(extortion_dialogue)
-		DialogueBox.show_text(npc_name, ["You received 10 gold coins!"])
+
+		DialogueBox.show_text("System", ["10 gold coins have been received — added to your currency."])
+
 		Globals.player_gold += 10
 		reward_given = true
 	else:

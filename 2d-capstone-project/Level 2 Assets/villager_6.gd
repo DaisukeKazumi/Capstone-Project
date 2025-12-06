@@ -23,9 +23,12 @@ func _handle_dialogue() -> void:
 		_show_dialogue(prove_dialogues[randi() % prove_dialogues.size()])
 	elif interaction_count == 11 and not reward_given:
 		_show_dialogue(befriend_dialogue)
-		DialogueBox.show_text(npc_name, ["You received a Defense Charm!"])
-		Globals.add_item("Defense Charm")
-		Globals.apply_defense_buff(0.5)
+
+		DialogueBox.show_text("System", ["Defense Charm has been consumed — Your defense increased by 50%!"])
+
+		var player = get_tree().get_nodes_in_group("Player")[0]
+		player.consume_reward("Defense Charm")
+
 		reward_given = true
 	else:
 		_show_dialogue(final_dialogue)

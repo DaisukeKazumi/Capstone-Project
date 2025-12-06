@@ -1,12 +1,20 @@
 extends Node
 
-var active_quests: Dictionary = {}
+var active_quest: Dictionary = {}
 
 func start_quest(npc_name: String, description: String) -> void:
-	active_quests[npc_name] = {"description": description, "completed": false}
+	active_quest = {
+		"npc": npc_name,
+		"description": description,
+		"completed": false
+	}
 	print("Quest started:", description)
 
 func complete_quest(npc_name: String) -> void:
-	if active_quests.has(npc_name):
-		active_quests[npc_name]["completed"] = true
-		print("Quest completed:", active_quests[npc_name]["description"])
+	if active_quest.has("npc") and active_quest["npc"] == npc_name:
+		active_quest["completed"] = true
+		print("Quest completed:", active_quest["description"])
+
+func clear_quest() -> void:
+	active_quest.clear()
+	print("Quest cleared")

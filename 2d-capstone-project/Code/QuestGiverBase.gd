@@ -85,8 +85,19 @@ func interact() -> void:
 	interaction_timer.start()
 
 # --- Helpers ---
-func _show_dialogue(line: String) -> void:
+func _show_dialogue(line: String, duration: float = 0.0) -> void:
+	# Show text in DialogueBox
 	DialogueBox.show_text(npc_name, [line])
+
+	# If a duration is provided, clear after that many seconds
+	if duration > 0.0:
+		var timer := get_tree().create_timer(duration)
+		timer.timeout.connect(func():
+			_clear_dialogue()
+		)
+
+func _clear_dialogue() -> void:
+	DialogueBox.hide_text()
 
 func _on_interaction_timeout() -> void:
 	is_interacting = false

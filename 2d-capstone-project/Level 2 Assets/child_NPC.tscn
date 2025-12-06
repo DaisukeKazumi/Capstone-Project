@@ -244,12 +244,12 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yumgt"]
-radius = 34.780983
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_byxd0"]
 radius = 5.9946804
 height = 11.989361
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yumgt"]
+radius = 34.780983
 
 [node name="ChildNpc" type="Node2D"]
 
@@ -261,6 +261,10 @@ script = ExtResource("1_yumgt")
 sprite_frames = SubResource("SpriteFrames_8ma4f")
 animation = &"Running_right"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.06819916, 0.9946804)
+shape = SubResource("CapsuleShape2D_byxd0")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
@@ -268,6 +272,6 @@ animation = &"Running_right"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 shape = SubResource("CircleShape2D_yumgt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0.06819916, 0.9946804)
-shape = SubResource("CapsuleShape2D_byxd0")
+[node name="InteractionTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 5.0
+one_shot = true

@@ -438,7 +438,7 @@ animations = [{
 radius = 6.0
 height = 24.0
 
-[node name="Node2D" type="Node2D"]
+[node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 texture_filter = 1
