@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b780f16ku81wj"
-path="res://.godot/imported/wizard death.png-c3cba45d71997590f88da4b272be7908.ctex"
+uid="uid://cr36esxsvo24l"
+path="res://.godot/imported/bO+TTu.png-461bf0e69f582178a0714b767dda1876.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Wizard/wizard death.png"
-dest_files=["res://.godot/imported/wizard death.png-c3cba45d71997590f88da4b272be7908.ctex"]
+source_file="res://level 3/Quest NPC/bO+TTu.png"
+dest_files=["res://.godot/imported/bO+TTu.png-461bf0e69f582178a0714b767dda1876.ctex"]
 
 [params]
 

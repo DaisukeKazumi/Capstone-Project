@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://ci7ofy7e6nlaa"]
 
-[ext_resource type="Script" uid="uid://d2jmpd6rak51q" path="res://Level 2 Assets/villager_1.gd" id="1_0b40p"]
+[ext_resource type="Script" uid="uid://d2jmpd6rak51q" path="res://Level 2 Assets/Villagers/villager_1.gd" id="1_0b40p"]
 [ext_resource type="Texture2D" uid="uid://coy8iiw4gmjnr" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_attack.png" id="2_0b40p"]
 [ext_resource type="Texture2D" uid="uid://be0d54tphjvuh" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_death.png" id="3_h7hiy"]
 [ext_resource type="Texture2D" uid="uid://bcoy4ixvbkghg" path="res://Assets/free-villagers-sprite-sheets-pixel-art/1 Old_man/Old_man_hurt.png" id="4_mwbqk"]

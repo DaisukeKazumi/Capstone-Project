@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://c8xprtyjs278l"]
 
-[ext_resource type="Script" uid="uid://bpxfxrgt85o2y" path="res://Level 2 Assets/villager_3.gd" id="1_n3h1k"]
+[ext_resource type="Script" uid="uid://bpxfxrgt85o2y" path="res://Level 2 Assets/Villagers/villager_3.gd" id="1_n3h1k"]
 [ext_resource type="Texture2D" uid="uid://fjcd8m31sabm" path="res://Assets/free-villagers-sprite-sheets-pixel-art/3 Man/Man_attack.png" id="2_d667b"]
 [ext_resource type="Texture2D" uid="uid://di0jcjxgblqc1" path="res://Assets/free-villagers-sprite-sheets-pixel-art/3 Man/Man_death.png" id="3_1rqdn"]
 [ext_resource type="Texture2D" uid="uid://cxqxjnke748ol" path="res://Assets/free-villagers-sprite-sheets-pixel-art/3 Man/Man_hurt.png" id="4_yxpwv"]

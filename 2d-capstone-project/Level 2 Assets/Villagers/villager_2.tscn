@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://dcv5rdgtglmut"]
 
-[ext_resource type="Script" uid="uid://bh4pgod6c3pij" path="res://Level 2 Assets/villager_2.gd" id="1_m7igu"]
+[ext_resource type="Script" uid="uid://bh4pgod6c3pij" path="res://Level 2 Assets/Villagers/villager_2.gd" id="1_m7igu"]
 [ext_resource type="Texture2D" uid="uid://ts15ma7qt051" path="res://Assets/free-villagers-sprite-sheets-pixel-art/2 Old_woman/Old_woman_attack.png" id="2_m7igu"]
 [ext_resource type="Texture2D" uid="uid://c80v6rjldayy8" path="res://Assets/free-villagers-sprite-sheets-pixel-art/2 Old_woman/Old_woman_death.png" id="3_afqyy"]
 [ext_resource type="Texture2D" uid="uid://c0o81t0nbch5" path="res://Assets/free-villagers-sprite-sheets-pixel-art/2 Old_woman/Old_woman_hurt.png" id="4_jf7k0"]

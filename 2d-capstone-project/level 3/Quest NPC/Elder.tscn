@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://crx45cn40oolo"]
+
+[ext_resource type="Script" uid="uid://b0wxkw3jn65y5" path="res://level 3/Quest NPC/FinalQuestNPC.gd" id="1_lu878"]
+[ext_resource type="Texture2D" uid="uid://cr36esxsvo24l" path="res://level 3/Quest NPC/bO+TTu.png" id="2_lu878"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx03b"]
+atlas = ExtResource("2_lu878")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yonse"]
+atlas = ExtResource("2_lu878")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rih0y"]
+atlas = ExtResource("2_lu878")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6cwx"]
+atlas = ExtResource("2_lu878")
+region = Rect2(160, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q4es"]
+atlas = ExtResource("2_lu878")
+region = Rect2(0, 240, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l0kq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx03b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yonse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rih0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6cwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q4es")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cq10u"]
+radius = 12.99468
+height = 51.98936
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu878"]
+radius = 60.00833
+
+[node name="Elder" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.06819916, -30.99468)
+script = ExtResource("1_lu878")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_4l0kq")
+animation = &"Idle"
+frame_progress = 0.6396733
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_cq10u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(0.06819916, 6.9946804)
+shape = SubResource("CircleShape2D_lu878")

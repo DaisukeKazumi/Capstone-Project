@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://dgkghibeh6fuq"]
 
-[ext_resource type="Script" uid="uid://dl7pc7we0tlrc" path="res://Level 2 Assets/child_NPC.gd" id="1_yumgt"]
+[ext_resource type="Script" uid="uid://dl7pc7we0tlrc" path="res://Level 2 Assets/Quest NPC/child_NPC.gd" id="1_yumgt"]
 [ext_resource type="Texture2D" uid="uid://h81vuutijvts" path="res://Assets/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/idle.png" id="2_piihw"]
 [ext_resource type="Texture2D" uid="uid://uhyacwm1b0ex" path="res://Assets/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/jump.png" id="3_33cgn"]
 [ext_resource type="Texture2D" uid="uid://dqdy4umfrvg5l" path="res://Assets/Hana Caraka - Base Character [sample]/Hana Caraka - Base Character [sample]/run.png" id="4_6qrxh"]
