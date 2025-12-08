@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://pkv7y561fsic" path="res://level 3/oak_woods_v1.0/decorations/grass_3.png" id="7_p8ch6"]
 [ext_resource type="Texture2D" uid="uid://cn5jfue4ig3hq" path="res://level 3/oak_woods_v1.0/decorations/grass_2.png" id="8_lj7gm"]
 [ext_resource type="Texture2D" uid="uid://bb7yr7u560bo1" path="res://level 3/oak_woods_v1.0/decorations/grass_1.png" id="9_lt05r"]
-[ext_resource type="PackedScene" uid="uid://crx45cn40oolo" path="res://level 3/Quest NPC/Elder.tscn" id="10_p8ch6"]
+[ext_resource type="PackedScene" uid="uid://nafc3ec8rm7i" path="res://level 3/Small Quest NPC/HunterNPC.tscn" id="10_p8ch6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me7ms"]
 texture = ExtResource("4_nd13s")
@@ -551,5 +551,5 @@ texture = ExtResource("9_lt05r")
 [node name="Node2D" parent="." instance=ExtResource("5_gclli")]
 position = Vector2(218, 604)
 
-[node name="Elder" parent="." instance=ExtResource("10_p8ch6")]
-position = Vector2(328, 618)
+[node name="Hunter" parent="." instance=ExtResource("10_p8ch6")]
+position = Vector2(324, 599)

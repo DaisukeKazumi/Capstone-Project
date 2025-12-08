@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://nafc3ec8rm7i"]
+
+[ext_resource type="Texture2D" uid="uid://c2cyrr8cp85sq" path="res://Assets/Medieval Warrior (Version 1.2)/Medieval Warrior Pack/Medieval Warrior Pack/Idle.png" id="1_60b4k"]
+[ext_resource type="Script" uid="uid://ccehf1403wnrh" path="res://level 3/Small Quest NPC/Hungry_Hunter.gd" id="1_t3plr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3plr"]
+atlas = ExtResource("1_60b4k")
+region = Rect2(0, 0, 184, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ie4i"]
+atlas = ExtResource("1_60b4k")
+region = Rect2(184, 0, 184, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taetx"]
+atlas = ExtResource("1_60b4k")
+region = Rect2(368, 0, 184, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veevp"]
+atlas = ExtResource("1_60b4k")
+region = Rect2(552, 0, 184, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwv77"]
+atlas = ExtResource("1_60b4k")
+region = Rect2(736, 0, 184, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdqx0"]
+atlas = ExtResource("1_60b4k")
+region = Rect2(920, 0, 184, 137)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1skwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3plr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ie4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taetx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veevp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwv77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdqx0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fpy24"]
+radius = 14.068199
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnjh1"]
+radius = 60.00833
+
+[node name="Hunter" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.06819916, -30.99468)
+script = ExtResource("1_t3plr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(3.0681992, -8.00532)
+scale = Vector2(0.8532609, 0.80656934)
+sprite_frames = SubResource("SpriteFrames_1skwr")
+animation = &"Idle"
+frame_progress = 0.05926097
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.06819916, 4.9946804)
+shape = SubResource("CapsuleShape2D_fpy24")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(-3.9318008, 8.99468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(3, -5)
+shape = SubResource("CircleShape2D_xnjh1")
