@@ -20,6 +20,7 @@ var defense_multiplier: float = 1.0
 
 # --- Quest Progress ---
 var rabbits_killed: int = 0   # counter for rabbit quest
+var rocks_collected: int = 0  # counter for miner quest
 
 # --- Inventory Management ---
 func add_item(item: String):
@@ -76,6 +77,15 @@ func register_rabbit_kill():
 func reset_rabbit_kills():
 	rabbits_killed = 0
 	print("Rabbit kill counter reset.")
+
+# --- Rock Collection Tracking ---
+func register_rock_collected():
+	rocks_collected += 1
+	print("Rock collected. Total:", rocks_collected)
+
+func reset_rocks_collected():
+	rocks_collected = 0
+	print("Rock counter reset.")
 
 # --- Defense Buff ---
 func apply_defense_buff(multiplier: float):

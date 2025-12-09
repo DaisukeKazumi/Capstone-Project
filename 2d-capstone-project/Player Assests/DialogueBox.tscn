@@ -20,8 +20,8 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 93.0
-offset_top = 27.0
+offset_left = 5.0
+offset_top = 18.0
 offset_right = 133.0
 offset_bottom = 76.0
 text = "
