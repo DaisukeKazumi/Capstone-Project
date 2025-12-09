@@ -26,6 +26,10 @@ QuestManager="*res://Code/QuestManager.gd"
 
 runtime/balloon_path="res://level 3/balloon.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
