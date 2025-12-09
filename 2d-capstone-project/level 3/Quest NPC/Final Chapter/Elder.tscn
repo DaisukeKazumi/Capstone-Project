@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://crx45cn40oolo"]
 
-[ext_resource type="Script" uid="uid://b0wxkw3jn65y5" path="res://level 3/Quest NPC/FinalQuestNPC.gd" id="1_lu878"]
-[ext_resource type="Texture2D" uid="uid://cr36esxsvo24l" path="res://level 3/Quest NPC/bO+TTu.png" id="2_lu878"]
+[ext_resource type="Script" uid="uid://b0wxkw3jn65y5" path="res://level 3/Quest NPC/Final Chapter/FinalQuestNPC.gd" id="1_lu878"]
+[ext_resource type="Texture2D" uid="uid://cr36esxsvo24l" path="res://level 3/Quest NPC/Final Chapter/bO+TTu.png" id="2_lu878"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hx03b"]
 atlas = ExtResource("2_lu878")
