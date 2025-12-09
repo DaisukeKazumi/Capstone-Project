@@ -452,11 +452,12 @@ frame = 5
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1, 3)
+position = Vector2(0.06819916, -0.0053195953)
 shape = SubResource("CapsuleShape2D_xhfnw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(3.0681992, -58.005318)
 offset = Vector2(0, -20)
-zoom = Vector2(5, 5)
+zoom = Vector2(3, 3)
