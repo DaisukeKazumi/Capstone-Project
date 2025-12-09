@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci36tiiunoxvb"]
+[gd_scene load_steps=13 format=3 uid="uid://ci36tiiunoxvb"]
 
 [ext_resource type="Texture2D" uid="uid://di1gfr0ln7vak" path="res://Assets/Sky/New free backgrounds part2/background 4/1.png" id="1_oo56u"]
 [ext_resource type="Script" uid="uid://bxytrfedex273" path="res://start menu/start_scene.gd" id="1_xtsgo"]
@@ -6,6 +6,70 @@
 [ext_resource type="Texture2D" uid="uid://bh5wkv3a0osw7" path="res://Assets/Sky/New free backgrounds part2/background 2/5.png" id="4_m05ik"]
 [ext_resource type="FontFile" uid="uid://wdc33m0o17h0" path="res://Assets/Fonts/m5x7.ttf" id="5_oo56u"]
 [ext_resource type="Texture2D" uid="uid://v22wcihduf25" path="res://Assets/Sky/New free backgrounds part2/background 2/4.png" id="5_xj183"]
+
+[sub_resource type="Animation" id="Animation_xtsgo"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_45f66"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ctegs"]
+_data = {
+&"RESET": SubResource("Animation_45f66"),
+&"fade_to_black": SubResource("Animation_xtsgo")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtsgo"]
+bg_color = Color(0.46143633, 0.1124467, 0.11464713, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.48451412, 4.2716042e-07, 1.92523e-07, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45f66"]
+bg_color = Color(0.4627451, 0.11372549, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.4862745, 0, 0, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctegs"]
+bg_color = Color(0.4627451, 0.11372549, 0.11372549, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.4862745, 0, 0, 0.6)
+shadow_size = 3
 
 [node name="start_scene" type="Node2D"]
 script = ExtResource("1_xtsgo")
@@ -50,6 +114,22 @@ position = Vector2(578.00006, 327.00003)
 scale = Vector2(2.0127313, 2.0127313)
 texture = ExtResource("4_m05ik")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043039218, 0.043039136, 0.04303915, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ctegs")
+}
+
 [node name="game_name" type="Label" parent="."]
 offset_left = 370.0
 offset_top = 137.0
@@ -67,6 +147,9 @@ offset_right = 578.0
 offset_bottom = 322.0
 theme_override_fonts/font = ExtResource("5_oo56u")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_xtsgo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xtsgo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xtsgo")
 text = "PLAY"
 
 [node name="about" type="Button" parent="."]
@@ -76,6 +159,9 @@ offset_right = 587.0
 offset_bottom = 400.0
 theme_override_fonts/font = ExtResource("5_oo56u")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_45f66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_45f66")
+theme_override_styles/hover = SubResource("StyleBoxFlat_45f66")
 text = "ABOUT"
 
 [node name="quit" type="Button" parent="."]
@@ -85,7 +171,11 @@ offset_right = 582.0
 offset_bottom = 480.0
 theme_override_fonts/font = ExtResource("5_oo56u")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctegs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ctegs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ctegs")
 text = "QUIT"
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="about" to="." method="_on_about_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
