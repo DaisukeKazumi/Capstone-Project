@@ -85,6 +85,11 @@ region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xgema"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_43hrw")
@@ -171,8 +176,7 @@ position = Vector2(-0.06819916, -30.99468)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(1.0681992, 13.99468)
 sprite_frames = SubResource("SpriteFrames_xgema")
-animation = &"Idle"
-frame_progress = 0.19224912
+animation = &"Death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0.06819916, 20.99468)
