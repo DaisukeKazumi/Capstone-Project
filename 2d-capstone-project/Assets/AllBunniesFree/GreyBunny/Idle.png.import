@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr36esxsvo24l"
-path="res://.godot/imported/bO+TTu.png-461bf0e69f582178a0714b767dda1876.ctex"
+uid="uid://6wwkq1q3ym4d"
+path="res://.godot/imported/Idle.png-2223817f22e6f9d884637ba3b192d7e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level 3/Quest NPC/bO+TTu.png"
-dest_files=["res://.godot/imported/bO+TTu.png-461bf0e69f582178a0714b767dda1876.ctex"]
+source_file="res://Assets/AllBunniesFree/GreyBunny/Idle.png"
+dest_files=["res://.godot/imported/Idle.png-2223817f22e6f9d884637ba3b192d7e7.ctex"]
 
 [params]
 

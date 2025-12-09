@@ -21,7 +21,6 @@ Globals="*res://Code/Globals.gd"
 DialogueBox="*res://Player Assests/DialogueBox.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestManager="*res://Code/QuestManager.gd"
-TransitionScreen="*res://start menu/transition_screen.tscn"
 
 [dialogue_manager]
 
@@ -29,7 +28,7 @@ runtime/balloon_path="res://level 3/balloon.tscn"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
