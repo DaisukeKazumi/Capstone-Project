@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cvhym3rorbnl6"]
+[gd_scene load_steps=60 format=3 uid="uid://cvhym3rorbnl6"]
 
 [ext_resource type="Script" uid="uid://di2c08lt2bphl" path="res://Player Assests/player.gd" id="1_k8v6v"]
 [ext_resource type="Texture2D" uid="uid://cdkj5dyumb46i" path="res://Assets/Character/AnimationSheet_Character.png" id="2_j3q1u"]
@@ -438,6 +438,9 @@ animations = [{
 radius = 6.0
 height = 24.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_joitl"]
+radius = 25.247704
+
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
@@ -461,3 +464,8 @@ shape = SubResource("CapsuleShape2D_xhfnw")
 position = Vector2(3.0681992, -58.005318)
 offset = Vector2(0, -20)
 zoom = Vector2(3, 3)
+
+[node name="AttackArea" type="Area2D" parent="CharacterBody2D" groups=["PlayerAttack"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea"]
+shape = SubResource("CircleShape2D_joitl")

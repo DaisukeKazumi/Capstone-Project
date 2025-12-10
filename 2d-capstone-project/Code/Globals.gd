@@ -19,24 +19,24 @@ var player_gold: int = 0
 var defense_multiplier: float = 1.0
 
 # --- Quest Progress ---
-var rabbits_killed: int = 0   # counter for rabbit quest
-var rocks_collected: int = 0  # counter for miner quest
+var rabbits_killed: int = 0   # counter for Hungry Hunter quest
+var rocks_collected: int = 0  # counter for Miner quest
 
 # --- Inventory Management ---
-func add_item(item: String):
+func add_item(item: String) -> void:
 	if not inventory.has(item):
 		inventory.append(item)
 		print("Added", item, "to inventory.")
 	else:
 		print(item, "is already in inventory.")
 
-func remove_item(item: String):
+func remove_item(item: String) -> void:
 	if inventory.has(item):
 		inventory.erase(item)
 		print("Removed", item, "from inventory.")
 
 # --- Item Consumption ---
-func consume_item(item: String):
+func consume_item(item: String) -> void:
 	if not inventory.has(item):
 		print("You don't have", item, "to consume.")
 		return
@@ -58,42 +58,48 @@ func consume_item(item: String):
 	remove_item(item)
 
 # --- Quest Management ---
-func add_quest(quest_id: String):
+func add_quest(quest_id: String) -> void:
 	if not active_quests.has(quest_id) and not completed_quests.has(quest_id):
 		active_quests.append(quest_id)
 		print("Quest started:", quest_id)
 
-func complete_quest(quest_id: String):
+func complete_quest(quest_id: String) -> void:
 	if active_quests.has(quest_id):
 		active_quests.erase(quest_id)
 		completed_quests.append(quest_id)
 		print("Quest completed:", quest_id)
 
 # --- Rabbit Kill Tracking ---
-func register_rabbit_kill():
+func register_rabbit_kill() -> void:
 	rabbits_killed += 1
 	print("Rabbit killed. Total:", rabbits_killed)
 
-func reset_rabbit_kills():
+func reset_rabbit_kills() -> void:
 	rabbits_killed = 0
 	print("Rabbit kill counter reset.")
 
+func get_rabbit_progress(required: int) -> String:
+	return str(rabbits_killed) + "/" + str(required)
+
 # --- Rock Collection Tracking ---
-func register_rock_collected():
+func register_rock_collected() -> void:
 	rocks_collected += 1
 	print("Rock collected. Total:", rocks_collected)
 
-func reset_rocks_collected():
+func reset_rocks_collected() -> void:
 	rocks_collected = 0
 	print("Rock counter reset.")
 
+func get_rock_progress(required: int) -> String:
+	return str(rocks_collected) + "/" + str(required)
+
 # --- Defense Buff ---
-func apply_defense_buff(multiplier: float):
+func apply_defense_buff(multiplier: float) -> void:
 	defense_multiplier = multiplier
 	print("Defense buff applied. Damage taken is now multiplied by", defense_multiplier)
 
 # --- Damage Handling ---
-func take_damage(amount: int):
+func take_damage(amount: int) -> void:
 	var adjusted = int(amount * defense_multiplier)
 	player_health = max(player_health - adjusted, 0)
 	print("Player took", adjusted, "damage. Health:", player_health)

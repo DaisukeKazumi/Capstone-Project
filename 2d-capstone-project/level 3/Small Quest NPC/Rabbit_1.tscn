@@ -1,7 +1,28 @@
-[gd_scene load_steps=26 format=3 uid="uid://dfc6i75gjxs4w"]
+[gd_scene load_steps=35 format=3 uid="uid://dfc6i75gjxs4w"]
 
+[ext_resource type="Texture2D" uid="uid://htu4u4ggxaau" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_01.png" id="1_31slq"]
 [ext_resource type="Texture2D" uid="uid://pkyf57ushxy3" path="res://Assets/AllBunniesFree/FantasyBunny/Idle.png" id="1_isb1x"]
+[ext_resource type="Texture2D" uid="uid://xdtstqcb7b8q" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_02.png" id="2_gjxxo"]
 [ext_resource type="Texture2D" uid="uid://cbv6kf13urxq1" path="res://Assets/AllBunniesFree/FantasyBunny/Running.png" id="2_xx1oo"]
+[ext_resource type="Texture2D" uid="uid://c712bxo0mbixo" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_03.png" id="3_y7nvq"]
+[ext_resource type="Texture2D" uid="uid://ba3hg6k35a00j" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_04.png" id="4_6r52q"]
+[ext_resource type="Script" uid="uid://dixpmakuyibqu" path="res://level 3/Small Quest NPC/Rabbit.gd" id="7_gjxxo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6prf"]
+atlas = ExtResource("1_31slq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0ncx"]
+atlas = ExtResource("2_gjxxo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ourbh"]
+atlas = ExtResource("3_y7nvq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4csf"]
+atlas = ExtResource("4_6r52q")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_danrx"]
 atlas = ExtResource("1_isb1x")
@@ -87,6 +108,23 @@ region = Rect2(224, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f6prf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0ncx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ourbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4csf")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_danrx")
 }, {
 "duration": 1.0,
@@ -167,12 +205,14 @@ radius = 60.00833
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-0.06819916, -30.99468)
+script = ExtResource("7_gjxxo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(1.0681992, 13.99468)
 sprite_frames = SubResource("SpriteFrames_f6prf")
-animation = &"Idle"
-frame_progress = 0.1672669
+animation = &"Death"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0.06819916, 20.99468)

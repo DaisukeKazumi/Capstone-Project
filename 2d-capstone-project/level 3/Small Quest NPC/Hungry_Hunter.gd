@@ -15,6 +15,8 @@ var gravity: float = Globals.gravity  # use global gravity value
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area: Area2D = $Area2D
 
+signal quest_rewarded   # optional signal for quest completion reward
+
 func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
@@ -62,6 +64,11 @@ func start_dialogue() -> void:
 			"Bring me their remains, and I will reward you."
 		]
 		quest_given = true
+
+		# ✅ Reset rabbit kill counter when quest starts
+		Globals.reset_rabbit_kills()
+		rabbits_killed = 0
+
 	elif quest_given and not quest_completed:
 		if rabbits_killed < rabbits_required:
 			dialogue_lines = [

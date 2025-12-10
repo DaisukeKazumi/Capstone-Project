@@ -1,7 +1,28 @@
-[gd_scene load_steps=26 format=3 uid="uid://dwt4pw2a0bk3t"]
+[gd_scene load_steps=35 format=3 uid="uid://dwt4pw2a0bk3t"]
 
+[ext_resource type="Script" uid="uid://dixpmakuyibqu" path="res://level 3/Small Quest NPC/Rabbit.gd" id="1_4o3g6"]
+[ext_resource type="Texture2D" uid="uid://htu4u4ggxaau" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_01.png" id="1_d67vx"]
 [ext_resource type="Texture2D" uid="uid://bysmeqye5x0gh" path="res://Assets/AllBunniesFree/DemonicBunny/Idle.png" id="1_nxuxo"]
+[ext_resource type="Texture2D" uid="uid://xdtstqcb7b8q" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_02.png" id="2_4o3g6"]
 [ext_resource type="Texture2D" uid="uid://bk23vtamo04ps" path="res://Assets/AllBunniesFree/DemonicBunny/Running.png" id="2_82ba6"]
+[ext_resource type="Texture2D" uid="uid://c712bxo0mbixo" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_03.png" id="3_qo26p"]
+[ext_resource type="Texture2D" uid="uid://ba3hg6k35a00j" path="res://level 3/Assets/FX052_nyknck/FX052_nyknck/FX052_04.png" id="4_c4egy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tadnc"]
+atlas = ExtResource("1_d67vx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftptd"]
+atlas = ExtResource("2_4o3g6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oje40"]
+atlas = ExtResource("3_qo26p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7pj7"]
+atlas = ExtResource("4_c4egy")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43hrw"]
 atlas = ExtResource("1_nxuxo")
@@ -85,8 +106,20 @@ region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xgema"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tadnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftptd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oje40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7pj7")
+}],
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -172,6 +205,7 @@ radius = 60.00833
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-0.06819916, -30.99468)
+script = ExtResource("1_4o3g6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(1.0681992, 13.99468)
@@ -193,3 +227,5 @@ shape = SubResource("CircleShape2D_pd7op")
 [node name="InteractionTimer" type="Timer" parent="CharacterBody2D"]
 wait_time = 5.0
 one_shot = true
+
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
