@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://pkv7y561fsic" path="res://level 3/oak_woods_v1.0/decorations/grass_3.png" id="7_p8ch6"]
 [ext_resource type="Texture2D" uid="uid://cn5jfue4ig3hq" path="res://level 3/oak_woods_v1.0/decorations/grass_2.png" id="8_lj7gm"]
 [ext_resource type="Texture2D" uid="uid://bb7yr7u560bo1" path="res://level 3/oak_woods_v1.0/decorations/grass_1.png" id="9_lt05r"]
-[ext_resource type="PackedScene" uid="uid://dwt4pw2a0bk3t" path="res://level 3/Small Quest NPC/Rabbit.tscn" id="10_lt05r"]
-[ext_resource type="PackedScene" uid="uid://dfc6i75gjxs4w" path="res://level 3/Small Quest NPC/Rabbit_1.tscn" id="11_g50ro"]
-[ext_resource type="PackedScene" uid="uid://nafc3ec8rm7i" path="res://level 3/Small Quest NPC/HunterNPC.tscn" id="12_twjd6"]
+[ext_resource type="PackedScene" uid="uid://dgkghibeh6fuq" path="res://Level 2 Assets/Quest NPC/child_NPC.tscn" id="10_lj7gm"]
+[ext_resource type="PackedScene" uid="uid://cgxrdt7qghei5" path="res://Level 2 Assets/Enemies/Goblin_1.tscn" id="11_lt05r"]
+[ext_resource type="PackedScene" uid="uid://dnt2yh0ndvm4e" path="res://Level 2 Assets/Enemies/GoblinSpawner.tscn" id="12_lt05r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me7ms"]
 texture = ExtResource("4_nd13s")
@@ -553,23 +553,14 @@ texture = ExtResource("9_lt05r")
 [node name="player" parent="." instance=ExtResource("5_gclli")]
 position = Vector2(218, 604)
 
-[node name="Rabbit" parent="." instance=ExtResource("10_lt05r")]
-position = Vector2(570, 582)
+[node name="ChildNpc" parent="." instance=ExtResource("10_lj7gm")]
+position = Vector2(253, 634)
 
-[node name="Rabbit1" parent="." instance=ExtResource("11_g50ro")]
-position = Vector2(506, 603)
+[node name="GoblinSpawner" parent="." instance=ExtResource("12_lt05r")]
+position = Vector2(454, 573)
 
-[node name="Rabbit2" parent="." instance=ExtResource("10_lt05r")]
-position = Vector2(638, 593)
+[node name="Goblin" parent="." instance=ExtResource("11_lt05r")]
+position = Vector2(337, 609)
 
-[node name="Rabbit3" parent="." instance=ExtResource("10_lt05r")]
-position = Vector2(543, 606)
-
-[node name="Rabbit4" parent="." instance=ExtResource("10_lt05r")]
-position = Vector2(691, 577)
-
-[node name="Rabbit5" parent="." instance=ExtResource("11_g50ro")]
-position = Vector2(746, 569)
-
-[node name="Hunter" parent="." instance=ExtResource("12_twjd6")]
-position = Vector2(99, 611)
+[node name="Goblin2" parent="." instance=ExtResource("11_lt05r")]
+position = Vector2(511, 604)

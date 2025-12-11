@@ -104,6 +104,10 @@ func _on_attack_timeout() -> void:
 func _perform_attack() -> void:
 	if is_dead: return
 	if attack_target and attack_target.has_method("take_damage"):
+		#Prevents goblins from attacking other goblins
+		if attack_target.is_in_group("Goblin"):
+			return
+
 		is_attacking = true
 		velocity.x = 0
 		if attack_target.global_position.x < global_position.x:
@@ -133,10 +137,7 @@ func die() -> void:
 	is_dead = true
 	is_attacking = false
 	velocity = Vector2.ZERO
-	anim.play("Death")   # ✅ play death animation (make sure it's non-looping)
-
-	# Wait 15 seconds before freeing the goblin
+	anim.play("Death")
+	Globals.goblins_killed += 1  
 	var timer := get_tree().create_timer(15.0)
-	timer.timeout.connect(func():
-		queue_free()
-	)
+	timer.timeout.connect(func(): queue_free())

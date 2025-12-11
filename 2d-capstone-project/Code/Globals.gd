@@ -21,6 +21,7 @@ var defense_multiplier: float = 1.0
 # --- Quest Progress ---
 var rabbits_killed: int = 0   # counter for Hungry Hunter quest
 var rocks_collected: int = 0  # counter for Miner quest
+var goblins_killed: int = 0   # ✅ counter for Child NPC / village defense quest
 
 # --- Inventory Management ---
 func add_item(item: String) -> void:
@@ -92,6 +93,18 @@ func reset_rocks_collected() -> void:
 
 func get_rock_progress(required: int) -> String:
 	return str(rocks_collected) + "/" + str(required)
+
+# --- Goblin Kill Tracking ---
+func register_goblin_kill() -> void:
+	goblins_killed += 1
+	print("Goblin killed. Total:", goblins_killed)
+
+func reset_goblin_kills() -> void:
+	goblins_killed = 0
+	print("Goblin kill counter reset.")
+
+func get_goblin_progress(required: int) -> String:
+	return str(goblins_killed) + "/" + str(required)
 
 # --- Defense Buff ---
 func apply_defense_buff(multiplier: float) -> void:

@@ -10,20 +10,18 @@ var dialogue_intro: Array[String] = [
 var quest_dialogue: String = "Please, you must defend the village before we can celebrate!"
 var dialogue_after_quest: Array[String] = [
 	"You saved us!",
-	"Thank you for protecting the village.",
-	"Here’s a piece of cake for you.",
-	"And... I think I know something about you..."
+	"Thank you for protecting the village."
 ]
 
 var idle_dialogue: String = "I have nothing more to ask of you."
 
 # --- Quest details ---
 var quest_id: String = "defend_village"
-var quest_item: String = "Enemy Defeated"
-var quest_amount: int = 1
+var quest_amount: int = 3   # require 3 goblins killed
 
 # --- Dialogue progression state ---
-var intro_index: int = 0   # tracks which intro line we’re on
+var intro_index: int = 0   
+var reward_given: bool = false  
 
 func _handle_dialogue() -> void:
 	# 1. Intro dialogues first
@@ -34,7 +32,7 @@ func _handle_dialogue() -> void:
 
 	# 2. After all intros, give quest dialogue + description + confirmation
 	if not quest_given and intro_index >= dialogue_intro.size():
-		var quest_text = "Quest: Defend the village from attackers"
+		var quest_text = "Quest: Defend the village by defeating 3 goblins"
 		var quest_received = "Quest received: Protect village"
 		_show_dialogue_array([quest_dialogue, quest_text, quest_received])
 
@@ -50,20 +48,19 @@ func _handle_dialogue() -> void:
 
 	# 3. Quest reminders until completion
 	if quest_given and not quest_completed:
-		if Globals.inventory.count(quest_item) >= quest_amount:
+		var goblins_defeated = Globals.goblins_killed 
+		if goblins_defeated >= quest_amount:
 			quest_completed = true
 			_show_dialogue("You did it! The village is safe.")
 			QuestManager.complete_quest(quest_id)
 		else:
-			_show_dialogue("Please defend the village before we can celebrate!")
+			_show_dialogue("Please defeat " + str(quest_amount - goblins_defeated) + " more goblins before we can celebrate!")
 		return
 
 	# 4. After completion
-	if quest_completed:
-		var line = dialogue_after_quest[randi() % dialogue_after_quest.size()]
-		_show_dialogue(line)
-		_give_reward()
-		_reveal_player_hint()
+	if quest_completed and not reward_given:
+		_give_reward_sequence()
+		reward_given = true
 	else:
 		_show_dialogue(idle_dialogue)
 
@@ -72,8 +69,13 @@ func _handle_dialogue() -> void:
 func _show_dialogue_array(lines: Array[String]) -> void:
 	DialogueBox.show_text(npc_name, lines)
 
-func _give_reward() -> void:
-	Globals.add_item("Cake")
+func _give_reward_sequence() -> void:
+	var reward_lines: Array[String] = [
+		"Here, have a piece of cake!",
+		"The cake makes you feel stronger... your defense has been boosted!",
+		"You’re not just anyone... you’re part of something greater."
+	]
+	_show_dialogue_array(reward_lines)
 
-func _reveal_player_hint() -> void:
-	_show_dialogue("You’re not just anyone... you’re part of something greater.")
+	Globals.add_item("Cake")
+	Globals.apply_defense_buff(0.8)
