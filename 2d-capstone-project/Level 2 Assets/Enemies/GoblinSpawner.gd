@@ -1,8 +1,7 @@
 extends Node2D
 
-# Path to your Goblin scene (PackedScene)
 @export var goblin_scene: PackedScene
-@export var spawn_location: Node2D   # optional: assign a Position2D in editor
+@export var spawn_location: Node2D   
 
 @onready var spawn_timer: Timer = $SpawnTimer
 

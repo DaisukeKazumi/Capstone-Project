@@ -17,7 +17,7 @@ var idle_dialogue: String = "I have nothing more to ask of you."
 
 # --- Quest details ---
 var quest_id: String = "defend_village"
-var quest_amount: int = 3   # require 3 goblins killed
+var quest_amount: int = 3   
 
 # --- Dialogue progression state ---
 var intro_index: int = 0   

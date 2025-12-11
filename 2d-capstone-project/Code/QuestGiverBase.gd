@@ -9,7 +9,7 @@ var quest_completed: bool = false
 
 # --- Movement State ---
 var start_position: Vector2
-var wander_range: float = 32.0   # short walking distance
+var wander_range: float = 32.0  
 var wander_timer: float = 0.0
 var wander_direction: Vector2 = Vector2.ZERO
 var gravity: float = 600.0
@@ -80,7 +80,7 @@ func interact() -> void:
 	var player = get_tree().get_nodes_in_group("Player")[0]
 	anim.flip_h = player.global_position.x < global_position.x
 
-	_handle_dialogue()   # delegate to child
+	_handle_dialogue() # Child classes handle this part
 
 	interaction_timer.start()
 

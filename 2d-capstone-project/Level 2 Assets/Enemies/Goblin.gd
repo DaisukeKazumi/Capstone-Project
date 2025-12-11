@@ -11,7 +11,7 @@ var facing_direction: int = 1
 
 var is_attacking: bool = false
 var attack_target: Node = null
-var is_dead: bool = false   # ✅ new flag
+var is_dead: bool = false  
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area: Area2D = $Area2D
@@ -21,7 +21,6 @@ func _ready() -> void:
 	# Detect player body for chasing/attacking
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
-	# ✅ Detect player attack hitbox
 	area.area_entered.connect(_on_area_entered)
 	attack_timer.wait_time = 5.0
 	attack_timer.one_shot = false
@@ -30,7 +29,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		velocity = Vector2.ZERO
-		return   # ✅ skip all movement/attack logic when dead
+		return   
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -64,7 +63,7 @@ func _physics_process(delta: float) -> void:
 
 func _update_animation() -> void:
 	if is_dead:
-		anim.play("Death")   # ✅ keep showing death animation
+		anim.play("Death")   
 		anim.flip_h = facing_direction < 0
 	elif is_attacking:
 		if attack_target:
@@ -104,7 +103,6 @@ func _on_attack_timeout() -> void:
 func _perform_attack() -> void:
 	if is_dead: return
 	if attack_target and attack_target.has_method("take_damage"):
-		#Prevents goblins from attacking other goblins
 		if attack_target.is_in_group("Goblin"):
 			return
 
@@ -124,7 +122,7 @@ func _perform_attack() -> void:
 func _on_area_entered(overlap: Area2D) -> void:
 	if is_dead: return
 	if overlap.is_in_group("PlayerAttack"):
-		take_damage(1)   # or scale with player.attack_power if desired
+		take_damage(1)   
 
 # --- Damage handling ---
 func take_damage(amount: int) -> void:
