@@ -4,7 +4,7 @@ extends Node
 var gravity: float = 1500
 var walk_speed: float = 70
 var run_speed: float = 200
-var jump_force: float = -400  # original was -600
+var jump_force: float = -400 
 
 # --- Global Gameplay Values ---
 var max_health: int = 100
@@ -19,9 +19,9 @@ var player_gold: int = 0
 var defense_multiplier: float = 1.0
 
 # --- Quest Progress ---
-var rabbits_killed: int = 0   # counter for Hungry Hunter quest
-var rocks_collected: int = 0  # counter for Miner quest
-var goblins_killed: int = 0   # ✅ counter for Child NPC / village defense quest
+var rabbits_killed: int = 0   
+var rocks_collected: int = 0  
+var goblins_killed: int = 0   
 
 # --- Inventory Management ---
 func add_item(item: String) -> void:

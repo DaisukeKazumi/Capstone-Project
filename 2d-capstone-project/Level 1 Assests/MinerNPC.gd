@@ -54,7 +54,6 @@ func _handle_dialogue() -> void:
 		quest_given = true
 		QuestManager.start_quest(npc_name, quest_text)
 
-		# ✅ Clear dialogue after 10 seconds so player goes to do quest
 		var timer := get_tree().create_timer(10.0)
 		timer.timeout.connect(func():
 			_clear_dialogue()
@@ -68,7 +67,7 @@ func _handle_dialogue() -> void:
 			_show_dialogue(completion_dialogue)
 			QuestManager.complete_quest(npc_name)
 
-			emit_signal("lead_player_out")   # plug-in for transition
+			emit_signal("lead_player_out") 
 		else:
 			var line = reminder_dialogues[randi() % reminder_dialogues.size()]
 			_show_dialogue(line)

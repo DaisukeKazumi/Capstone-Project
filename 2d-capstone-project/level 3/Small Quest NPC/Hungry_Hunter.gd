@@ -10,12 +10,12 @@ var is_interacting: bool = false
 var dialogue_lines: Array = []
 var current_line: int = 0
 
-var gravity: float = Globals.gravity  # use global gravity value
+var gravity: float = Globals.gravity 
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area: Area2D = $Area2D
 
-signal quest_rewarded   # optional signal for quest completion reward
+signal quest_rewarded   
 
 func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
@@ -65,7 +65,6 @@ func start_dialogue() -> void:
 		]
 		quest_given = true
 
-		# ✅ Reset rabbit counter when quest starts
 		Globals.reset_rabbit_kills()
 		rabbits_caught = 0
 

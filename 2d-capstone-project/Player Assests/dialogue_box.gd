@@ -26,7 +26,7 @@ func _update_text() -> void:
 	if current_index < current_lines.size():
 		label.text = current_npc + ": " + current_lines[current_index]
 	else:
-		# End of dialogue
+		# Ends the text
 		visible = false
 
 func next_line() -> void:
@@ -41,7 +41,6 @@ func _process(delta: float) -> void:
 	if visible and is_story_npc and Input.is_action_just_pressed("interact"):
 		next_line()
 
-# --- New helper ---
 func hide_text() -> void:
 	# Called when player leaves NPC range
 	visible = false

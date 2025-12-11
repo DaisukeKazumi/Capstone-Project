@@ -6,29 +6,34 @@ var current_health: float = base_health
 var attack_power: float = 10.0
 var defense: float = 5.0
 
-# Double-click detection
+# Health regeneration
+var regen_interval: float = 2.0        
+var regen_amount: float = 0.5          
+var _regen_accumulator: float = 0.0    
+
+# Double-click detection 
 var last_key_time = {}
 var double_click_threshold = 0.25  
 
 # Jump tracking
 var can_double_jump = false
-var is_jumping = false   # tracks jump state
+var is_jumping = false 
 
 # Animation state
 var is_busy = false    
 var is_running = false  
 var can_teleport = true  
-var is_attacking: bool = false   # ✅ flag for combat
+var is_attacking: bool = false  
 
 # References
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var attack_area: Area2D = $AttackArea   # child Area2D node for hitbox
+@onready var attack_area: Area2D = $AttackArea   
 
 func _ready() -> void:
 	attack_area.monitoring = false
 	attack_area.add_to_group("PlayerAttack")
-	add_to_group("Player")   # ✅ so enemies can find the player node
-
+	add_to_group("Player")   
+	
 func _physics_process(delta: float) -> void:
 	# Gravity
 	if not is_on_floor():
@@ -62,14 +67,16 @@ func _physics_process(delta: float) -> void:
 			anim.play("Idle_lowhealth" if _low_health() else "Idle")
 			velocity.x = 0
 	
-	# Jump
+	# Jump 
 	if Input.is_action_just_pressed("Jump") and not is_busy:
 		if is_on_floor():
+			# First jump
 			velocity.y = Globals.jump_force
 			can_double_jump = true
 			is_jumping = true
 			anim.play("Jump")
-		elif can_double_jump and _is_double_click("Jump"):
+		elif can_double_jump:
+			# Second jump (double jump)
 			velocity.y = Globals.jump_force
 			can_double_jump = false
 			is_jumping = true
@@ -78,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	# Attack
 	if Input.is_action_just_pressed("Attack") and not is_busy:
 		is_busy = true
-		is_attacking = true   # ✅ flag on
+		is_attacking = true 
 		anim.play("Attack")
 		anim.frame = 0
 		anim.speed_scale = 0.7
@@ -87,7 +94,7 @@ func _physics_process(delta: float) -> void:
 		await anim.animation_finished
 
 		attack_area.monitoring = false
-		is_attacking = false   # ✅ flag off
+		is_attacking = false   
 		is_busy = false
 	
 	# Teleport
@@ -99,6 +106,17 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and is_jumping and not is_busy:
 		anim.play("Landing")
 		is_jumping = false
+
+	# --- Health regeneration (0.5 health every 2 seconds) ---
+	if current_health < base_health:
+		_regen_accumulator += delta
+		if _regen_accumulator >= regen_interval:
+			var ticks := int(_regen_accumulator / regen_interval)
+			current_health = min(current_health + regen_amount * ticks, base_health)
+			_regen_accumulator -= regen_interval * ticks
+	else:
+		# reset accumulator when at full health
+		_regen_accumulator = 0.0
 
 # --- Helper Functions ---
 func _is_double_click(action: String) -> bool:
