@@ -102,6 +102,7 @@ text = "IMPORTANT CONTROLS:
 - left/right arrow keys to move left/right
 - space bar to jump (can double jump by pressing space bar twice)
 - E key to interact with world characters
+- double finger press/right mouse button to teleport
 - "
 
 [node name="go_back" type="Button" parent="."]
