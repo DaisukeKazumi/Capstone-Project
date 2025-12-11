@@ -98,7 +98,7 @@ offset_bottom = 181.0
 theme_override_fonts/font = ExtResource("5_xug04")
 theme_override_font_sizes/font_size = 45
 text = "IMPORTANT CONTROLS:
-- A/D keys to move left/right
+- A/D keys to move left/right (double press to speed up)
 - left/right arrow keys to move left/right
 - space bar to jump (can double jump by pressing space bar twice)
 - E key to interact with world characters

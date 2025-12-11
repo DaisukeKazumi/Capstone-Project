@@ -139,5 +139,5 @@ func die() -> void:
 	velocity = Vector2.ZERO
 	anim.play("Death")
 	Globals.goblins_killed += 1  
-	var timer := get_tree().create_timer(15.0)
+	var timer := get_tree().create_timer(2.0)
 	timer.timeout.connect(func(): queue_free())
