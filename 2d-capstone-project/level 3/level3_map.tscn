@@ -554,19 +554,22 @@ texture = ExtResource("9_lt05r")
 position = Vector2(218, 604)
 
 [node name="Rabbit" parent="." instance=ExtResource("10_lt05r")]
-position = Vector2(527, 599)
+position = Vector2(570, 582)
 
 [node name="Rabbit1" parent="." instance=ExtResource("11_g50ro")]
-position = Vector2(698, 565)
+position = Vector2(506, 603)
 
 [node name="Rabbit2" parent="." instance=ExtResource("10_lt05r")]
-position = Vector2(613, 588)
+position = Vector2(638, 593)
 
-[node name="Rabbit3" parent="." instance=ExtResource("11_g50ro")]
-position = Vector2(407, 569)
+[node name="Rabbit3" parent="." instance=ExtResource("10_lt05r")]
+position = Vector2(543, 606)
 
 [node name="Rabbit4" parent="." instance=ExtResource("10_lt05r")]
-position = Vector2(454, 539)
+position = Vector2(691, 577)
+
+[node name="Rabbit5" parent="." instance=ExtResource("11_g50ro")]
+position = Vector2(746, 569)
 
 [node name="Hunter" parent="." instance=ExtResource("12_twjd6")]
-position = Vector2(129, 607)
+position = Vector2(99, 611)

@@ -195,11 +195,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0ncx"]
-radius = 13.0
-height = 26.0
+radius = 8.0
+height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ourbh"]
-radius = 60.00833
+radius = 9.0
 
 [node name="Rabbit1" type="Node2D"]
 
@@ -210,12 +210,10 @@ script = ExtResource("7_gjxxo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(1.0681992, 13.99468)
 sprite_frames = SubResource("SpriteFrames_f6prf")
-animation = &"Death"
-frame = 3
-frame_progress = 1.0
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0.06819916, 20.99468)
+position = Vector2(1.0681992, 22.99468)
 shape = SubResource("CapsuleShape2D_y0ncx")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
@@ -223,7 +221,7 @@ shape = SubResource("CapsuleShape2D_y0ncx")
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-position = Vector2(0.06819916, 20.99468)
+position = Vector2(1.0681992, 22.99468)
 shape = SubResource("CircleShape2D_ourbh")
 
 [node name="InteractionTimer" type="Timer" parent="CharacterBody2D"]

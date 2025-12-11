@@ -55,31 +55,42 @@ func start_dialogue() -> void:
 	var player = get_tree().get_nodes_in_group("Player")[0]
 	anim.flip_h = player.global_position.x < global_position.x
 
-	var rabbits_killed = Globals.rabbits_killed
+	var rabbits_caught = Globals.rabbits_killed   # still using global counter, but now interpreted as "caught"
 
 	if not quest_given:
 		dialogue_lines = [
 			"It's been a harsh season… food is scarce.",
-			"I need your help. Hunt 5 rabbits so I can survive the winter.",
-			"Bring me their remains, and I will reward you."
+			"I need your help. Please catch 5 rabbits so I can survive the winter.",
+			"Bring them to me, and I will reward you."
 		]
 		quest_given = true
 
-		# ✅ Reset rabbit kill counter when quest starts
+		# ✅ Reset rabbit counter when quest starts
 		Globals.reset_rabbit_kills()
-		rabbits_killed = 0
+		rabbits_caught = 0
 
 	elif quest_given and not quest_completed:
-		if rabbits_killed < rabbits_required:
+		if rabbits_caught < rabbits_required:
 			dialogue_lines = [
-				"You have slain " + str(rabbits_killed) + " rabbits so far.",
-				"I still need " + str(rabbits_required - rabbits_killed) + " more."
+				"You have caught " + str(rabbits_caught) + " rabbits so far.",
+				"I still need " + str(rabbits_required - rabbits_caught) + " more."
 			]
-		else:
+		elif rabbits_caught == rabbits_required:
 			quest_completed = true
 			dialogue_lines = [
-				"You’ve done it… the rabbits will keep me alive this winter.",
+				"You’ve done it… these rabbits will keep me alive this winter.",
 				"In return, I give you this half picture I found.",
+				"Strange, isn’t it? The figure wears a cloak… much like yours.",
+				"But it is larger, older… perhaps a shadow of who you truly are."
+			]
+			Globals.add_item("Half Picture")
+			emit_signal("quest_rewarded")
+		elif rabbits_caught > rabbits_required:
+			quest_completed = true
+			dialogue_lines = [
+				"You’ve brought me more than enough rabbits!",
+				"I am truly grateful — your generosity will keep me well fed.",
+				"As promised, here is the half picture I found.",
 				"Strange, isn’t it? The figure wears a cloak… much like yours.",
 				"But it is larger, older… perhaps a shadow of who you truly are."
 			]
