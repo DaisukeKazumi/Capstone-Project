@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cr0gt5aufegbf"]
+[gd_scene load_steps=14 format=4 uid="uid://cr0gt5aufegbf"]
 
 [ext_resource type="Texture2D" uid="uid://do4md33afoqh4" path="res://level 3/oak_woods_v1.0/parallax background/background_layer_1.png" id="1_e38qh"]
 [ext_resource type="Texture2D" uid="uid://dgusqhgd7vb0k" path="res://level 3/oak_woods_v1.0/parallax background/background_layer_2.png" id="2_wxb1b"]
@@ -11,9 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bb7yr7u560bo1" path="res://level 3/oak_woods_v1.0/decorations/grass_1.png" id="9_lt05r"]
 [ext_resource type="Texture2D" uid="uid://bq4nxqx2w2q88" path="res://level 3/oak_woods_v1.0/decorations/rock_1.png" id="9_twjd6"]
 [ext_resource type="Texture2D" uid="uid://dtypjpas6u0v0" path="res://level 3/oak_woods_v1.0/decorations/rock_2.png" id="10_7rx40"]
-[ext_resource type="PackedScene" uid="uid://dgkghibeh6fuq" path="res://Level 2 Assets/Quest NPC/child_NPC.tscn" id="10_lj7gm"]
-[ext_resource type="PackedScene" uid="uid://cgxrdt7qghei5" path="res://Level 2 Assets/Enemies/Goblin_1.tscn" id="11_lt05r"]
-[ext_resource type="PackedScene" uid="uid://dnt2yh0ndvm4e" path="res://Level 2 Assets/Enemies/GoblinSpawner.tscn" id="12_lt05r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me7ms"]
 texture = ExtResource("4_nd13s")
@@ -572,15 +569,3 @@ texture = ExtResource("6_gclli")
 
 [node name="player" parent="." instance=ExtResource("5_gclli")]
 position = Vector2(218, 604)
-
-[node name="ChildNpc" parent="." instance=ExtResource("10_lj7gm")]
-position = Vector2(253, 634)
-
-[node name="GoblinSpawner" parent="." instance=ExtResource("12_lt05r")]
-position = Vector2(454, 573)
-
-[node name="Goblin" parent="." instance=ExtResource("11_lt05r")]
-position = Vector2(337, 609)
-
-[node name="Goblin2" parent="." instance=ExtResource("11_lt05r")]
-position = Vector2(511, 604)

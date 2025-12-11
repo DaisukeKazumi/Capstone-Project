@@ -3,14 +3,17 @@ extends "res://Code/QuestGiverBase.gd"
 # --- Child-specific dialogue pools ---
 var dialogue_intro: Array[String] = [
 	"Today is my birthday...",
+	"Our village has been destroyed...",
+	"We’re trying to cheer everyone up with a party!",
 	"But the village is under attack!",
 	"Please, defend us so the celebration isn’t ruined!"
 ]
 
-var quest_dialogue: String = "Please, you must defend the village before we can celebrate!"
+var quest_dialogue: String = "Please, you must defend the village so we can have the party and lift everyone’s spirits!"
 var dialogue_after_quest: Array[String] = [
 	"You saved us!",
-	"Thank you for protecting the village."
+	"Thank you for protecting the village.",
+	"Now we can finally have our party to cheer everyone up."
 ]
 
 var idle_dialogue: String = "I have nothing more to ask of you."
@@ -32,8 +35,8 @@ func _handle_dialogue() -> void:
 
 	# 2. After all intros, give quest dialogue + description + confirmation
 	if not quest_given and intro_index >= dialogue_intro.size():
-		var quest_text = "Quest: Defend the village by defeating 3 goblins"
-		var quest_received = "Quest received: Protect village"
+		var quest_text = "Quest: Defend the village by defeating 3 goblins so the party can happen"
+		var quest_received = "Quest received: Protect the village and save the party"
 		_show_dialogue_array([quest_dialogue, quest_text, quest_received])
 
 		quest_given = true
@@ -51,10 +54,10 @@ func _handle_dialogue() -> void:
 		var goblins_defeated = Globals.goblins_killed 
 		if goblins_defeated >= quest_amount:
 			quest_completed = true
-			_show_dialogue("You did it! The village is safe.")
+			_show_dialogue("You did it! The village is safe, and now we can celebrate together.")
 			QuestManager.complete_quest(quest_id)
 		else:
-			_show_dialogue("Please defeat " + str(quest_amount - goblins_defeated) + " more goblins before we can celebrate!")
+			_show_dialogue("Please defeat " + str(quest_amount - goblins_defeated) + " more goblins before we can have the party!")
 		return
 
 	# 4. After completion
