@@ -21,6 +21,7 @@ Globals="*res://Code/Globals.gd"
 DialogueBox="*res://Player Assests/DialogueBox.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestManager="*res://Code/QuestManager.gd"
+GameBgMusic="*res://game_bg_music.tscn"
 
 [dialogue_manager]
 
