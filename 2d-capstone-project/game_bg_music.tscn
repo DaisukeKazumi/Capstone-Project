@@ -2,6 +2,6 @@
 
 [ext_resource type="AudioStream" uid="uid://bxshnto6i0fo8" path="res://Assets/Golden Gleam.mp3" id="1_bryvv"]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer"]
 stream = ExtResource("1_bryvv")
 autoplay = true
