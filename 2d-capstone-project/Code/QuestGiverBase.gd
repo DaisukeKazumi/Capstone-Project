@@ -15,7 +15,7 @@ var wander_direction: Vector2 = Vector2.ZERO
 var gravity: float = 600.0
 var speed: float = 30.0
 var is_interacting: bool = false
-var player_in_range: bool = false
+var current_player: Node = null   # track the specific player in this NPC's Area2D
 
 # --- References ---
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -29,13 +29,14 @@ func _ready() -> void:
 	$Area2D.body_exited.connect(_on_body_exited)
 	interaction_timer.timeout.connect(_on_interaction_timeout)
 
+# --- Player detection ---
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		player_in_range = true
+		current_player = body
 
 func _on_body_exited(body: Node) -> void:
-	if body.is_in_group("Player"):
-		player_in_range = false
+	if body == current_player:
+		current_player = null
 		DialogueBox.hide_text()
 
 # --- Physics ---
@@ -69,32 +70,31 @@ func _physics_process(delta: float) -> void:
 
 # --- Interaction ---
 func _process(delta: float) -> void:
-	if player_in_range and Input.is_action_just_pressed("interact"):
+	if current_player != null and Input.is_action_just_pressed("interact"):
 		interact()
 
 func interact() -> void:
+	if current_player == null:
+		return
+
 	is_interacting = true
 	velocity = Vector2.ZERO
 	anim.play("Idle")
 
-	var player = get_tree().get_nodes_in_group("Player")[0]
-	anim.flip_h = player.global_position.x < global_position.x
+	# Face the player
+	anim.flip_h = current_player.global_position.x < global_position.x
 
 	_handle_dialogue() # Child classes handle this part
-
 	interaction_timer.start()
 
 # --- Helpers ---
 func _show_dialogue(line: String, duration: float = 0.0) -> void:
-	# Show text in DialogueBox
 	DialogueBox.show_text(npc_name, [line])
 
-	# If a duration is provided, clear after that many seconds
 	if duration > 0.0:
 		var timer := get_tree().create_timer(duration)
 		timer.timeout.connect(func():
-			_clear_dialogue()
-		)
+			_clear_dialogue())
 
 func _clear_dialogue() -> void:
 	DialogueBox.hide_text()

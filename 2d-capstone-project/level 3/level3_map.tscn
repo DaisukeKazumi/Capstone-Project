@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cr0gt5aufegbf"]
+[gd_scene load_steps=18 format=4 uid="uid://cr0gt5aufegbf"]
 
 [ext_resource type="Texture2D" uid="uid://do4md33afoqh4" path="res://level 3/oak_woods_v1.0/parallax background/background_layer_1.png" id="1_e38qh"]
 [ext_resource type="Texture2D" uid="uid://dgusqhgd7vb0k" path="res://level 3/oak_woods_v1.0/parallax background/background_layer_2.png" id="2_wxb1b"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bb7yr7u560bo1" path="res://level 3/oak_woods_v1.0/decorations/grass_1.png" id="9_lt05r"]
 [ext_resource type="Texture2D" uid="uid://bq4nxqx2w2q88" path="res://level 3/oak_woods_v1.0/decorations/rock_1.png" id="9_twjd6"]
 [ext_resource type="Texture2D" uid="uid://dtypjpas6u0v0" path="res://level 3/oak_woods_v1.0/decorations/rock_2.png" id="10_7rx40"]
+[ext_resource type="PackedScene" uid="uid://crx45cn40oolo" path="res://level 3/Quest NPC/Final Chapter/Elder.tscn" id="12_lt05r"]
+[ext_resource type="PackedScene" uid="uid://nafc3ec8rm7i" path="res://level 3/Small Quest NPC/HunterNPC.tscn" id="13_7rx40"]
+[ext_resource type="PackedScene" uid="uid://dwt4pw2a0bk3t" path="res://level 3/Small Quest NPC/Rabbit.tscn" id="14_bjul3"]
+[ext_resource type="PackedScene" uid="uid://dfc6i75gjxs4w" path="res://level 3/Small Quest NPC/Rabbit_1.tscn" id="15_wsavc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me7ms"]
 texture = ExtResource("4_nd13s")
@@ -576,3 +580,27 @@ texture = ExtResource("6_gclli")
 
 [node name="player" parent="." instance=ExtResource("5_gclli")]
 position = Vector2(218, 604)
+
+[node name="Elder" parent="." instance=ExtResource("12_lt05r")]
+position = Vector2(1706, 494)
+
+[node name="Hunter" parent="." instance=ExtResource("13_7rx40")]
+position = Vector2(88, 609)
+
+[node name="Rabbit" parent="." instance=ExtResource("14_bjul3")]
+position = Vector2(584, 618)
+
+[node name="Rabbit1" parent="." instance=ExtResource("15_wsavc")]
+position = Vector2(647, 600)
+
+[node name="Rabbit2" parent="." instance=ExtResource("14_bjul3")]
+position = Vector2(724, 587)
+
+[node name="Rabbit3" parent="." instance=ExtResource("14_bjul3")]
+position = Vector2(798, 582)
+
+[node name="Rabbit4" parent="." instance=ExtResource("15_wsavc")]
+position = Vector2(459, 540)
+
+[node name="Rabbit5" parent="." instance=ExtResource("14_bjul3")]
+position = Vector2(914, 566)

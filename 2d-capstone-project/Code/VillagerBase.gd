@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var npc_name: String = "Villager"
 var interaction_count: int = 0
-var player_in_range: bool = false
+var current_player: Node = null   # track the specific player in this villager's Area2D
 var health: int = 100
 var gravity: float = 600.0
 var speed: float = 40.0
@@ -21,15 +21,17 @@ func _ready() -> void:
 	collision_shape.scale.x = 1
 	print("Villager ready: ", npc_name)
 
+# --- Player detection ---
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		player_in_range = true
+		current_player = body
 
 func _on_body_exited(body: Node) -> void:
-	if body.is_in_group("Player"):
-		player_in_range = false
+	if body == current_player:
+		current_player = null
 		DialogueBox.hide_text()
 
+# --- Physics: gravity + wandering ---
 func _physics_process(delta: float) -> void:
 	if is_interacting:
 		velocity = Vector2.ZERO
@@ -56,21 +58,24 @@ func _physics_process(delta: float) -> void:
 	else:
 		anim.play("Idle")
 
+# --- Interaction ---
 func _process(delta: float) -> void:
-	if player_in_range and Input.is_action_just_pressed("interact"):
+	if current_player != null and Input.is_action_just_pressed("interact"):
 		interact()
 
 func interact() -> void:
+	if current_player == null:
+		return
+
 	interaction_count += 1
 	is_interacting = true
 	velocity = Vector2.ZERO
 	anim.play("Idle")
 
-	var player = get_tree().get_nodes_in_group("Player")[0]
-	anim.flip_h = player.global_position.x < global_position.x
+	# Face the player
+	anim.flip_h = current_player.global_position.x < global_position.x
 
 	_handle_dialogue()   # delegate to child
-
 	interaction_timer.start()
 
 func _show_dialogue(line: String) -> void:

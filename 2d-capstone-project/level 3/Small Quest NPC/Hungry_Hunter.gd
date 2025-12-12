@@ -22,12 +22,10 @@ func _ready() -> void:
 	area.body_exited.connect(_on_body_exited)
 
 func _physics_process(delta: float) -> void:
-	# Apply gravity so NPC reacts to floor
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
-
 	move_and_slide()
 
 func _on_body_entered(body: Node) -> void:
@@ -55,7 +53,7 @@ func start_dialogue() -> void:
 	var player = get_tree().get_nodes_in_group("Player")[0]
 	anim.flip_h = player.global_position.x < global_position.x
 
-	var rabbits_caught = Globals.rabbits_killed   # still using global counter, but now interpreted as "caught"
+	var rabbits_caught = Globals.rabbits_killed   # use global counter directly
 
 	if not quest_given:
 		dialogue_lines = [
@@ -65,31 +63,17 @@ func start_dialogue() -> void:
 		]
 		quest_given = true
 
-		Globals.reset_rabbit_kills()
-		rabbits_caught = 0
-
 	elif quest_given and not quest_completed:
 		if rabbits_caught < rabbits_required:
 			dialogue_lines = [
 				"You have caught " + str(rabbits_caught) + " rabbits so far.",
 				"I still need " + str(rabbits_required - rabbits_caught) + " more."
 			]
-		elif rabbits_caught == rabbits_required:
+		elif rabbits_caught >= rabbits_required:
 			quest_completed = true
 			dialogue_lines = [
 				"You’ve done it… these rabbits will keep me alive this winter.",
 				"In return, I give you this half picture I found.",
-				"Strange, isn’t it? The figure wears a cloak… much like yours.",
-				"But it is larger, older… perhaps a shadow of who you truly are."
-			]
-			Globals.add_item("Half Picture")
-			emit_signal("quest_rewarded")
-		elif rabbits_caught > rabbits_required:
-			quest_completed = true
-			dialogue_lines = [
-				"You’ve brought me more than enough rabbits!",
-				"I am truly grateful — your generosity will keep me well fed.",
-				"As promised, here is the half picture I found.",
 				"Strange, isn’t it? The figure wears a cloak… much like yours.",
 				"But it is larger, older… perhaps a shadow of who you truly are."
 			]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dhsul5sfc1ybv"]
+[gd_scene load_steps=25 format=4 uid="uid://dhsul5sfc1ybv"]
 
 [ext_resource type="Texture2D" uid="uid://bdlmvtssjxsv0" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation.png" id="1_rourq"]
 [ext_resource type="PackedScene" uid="uid://cvhym3rorbnl6" path="res://Player Assests/Player.tscn" id="1_wv84o"]
@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://dicf8n3x3lrvu" path="res://Assets/Nature Landscapes Free Pixel Art/nature_5/4.png" id="9_fwjr0"]
 [ext_resource type="Texture2D" uid="uid://dnqv06v1f28re" path="res://Assets/Nature Landscapes Free Pixel Art/nature_5/5.png" id="10_4o6u6"]
 [ext_resource type="Texture2D" uid="uid://wlsrj4qti5bn" path="res://Assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="11_0bvf8"]
+[ext_resource type="PackedScene" uid="uid://dgkghibeh6fuq" path="res://Level 2 Assets/Quest NPC/child_NPC.tscn" id="13_fwjr0"]
+[ext_resource type="PackedScene" uid="uid://ci7ofy7e6nlaa" path="res://Level 2 Assets/Villagers/villager_1.tscn" id="14_4o6u6"]
+[ext_resource type="PackedScene" uid="uid://dcv5rdgtglmut" path="res://Level 2 Assets/Villagers/villager_2.tscn" id="15_dxy1p"]
+[ext_resource type="PackedScene" uid="uid://dnt2yh0ndvm4e" path="res://Level 2 Assets/Enemies/GoblinSpawner.tscn" id="17_bxu78"]
+[ext_resource type="PackedScene" uid="uid://cgxrdt7qghei5" path="res://Level 2 Assets/Enemies/Goblin_1.tscn" id="18_yxfq8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5t1a"]
 texture = ExtResource("1_rourq")
@@ -3482,3 +3487,21 @@ tile_set = SubResource("TileSet_nwfyb")
 
 [node name="Player" parent="." instance=ExtResource("1_wv84o")]
 position = Vector2(102, 576)
+
+[node name="Villager1" parent="." instance=ExtResource("14_4o6u6")]
+position = Vector2(738, 541)
+
+[node name="ChildNpc" parent="." instance=ExtResource("13_fwjr0")]
+position = Vector2(165, 564)
+
+[node name="GoblinSpawner" parent="." instance=ExtResource("17_bxu78")]
+position = Vector2(1644, 502)
+
+[node name="Goblin" parent="." instance=ExtResource("18_yxfq8")]
+position = Vector2(1242, 536)
+
+[node name="Goblin2" parent="." instance=ExtResource("18_yxfq8")]
+position = Vector2(1487, 547)
+
+[node name="Villager2" parent="." instance=ExtResource("15_dxy1p")]
+position = Vector2(938, 544)
