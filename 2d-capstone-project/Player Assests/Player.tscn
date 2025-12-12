@@ -435,8 +435,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xhfnw"]
-radius = 6.0
-height = 24.0
+radius = 7.0
+height = 28.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_joitl"]
 radius = 25.247704
@@ -455,7 +455,7 @@ frame = 5
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0.06819916, -0.0053195953)
+position = Vector2(-0.93180084, 1.9946804)
 shape = SubResource("CapsuleShape2D_xhfnw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]

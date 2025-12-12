@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbhmf5rhh2tqe"]
+[gd_scene load_steps=3 format=3 uid="uid://dbhmf5rhh2tqe"]
 
 [ext_resource type="Script" uid="uid://ty650cs1m7xk" path="res://Player Assests/dialogue_box.gd" id="1_jwvy0"]
+[ext_resource type="FontFile" uid="uid://wdc33m0o17h0" path="res://Assets/Fonts/m5x7.ttf" id="2_morfe"]
 
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_jwvy0")
@@ -24,5 +25,7 @@ offset_left = 5.0
 offset_top = 18.0
 offset_right = 133.0
 offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("2_morfe")
+theme_override_font_sizes/font_size = 30
 text = "
 "

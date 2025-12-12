@@ -488,10 +488,17 @@ sources/0 = SubResource("TileSetAtlasSource_me7ms")
 
 [node name="Node2D" type="Node2D" groups=["Player"]]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -251.0
+offset_top = 155.0
+offset_right = 2666.0
+offset_bottom = 868.0
+color = Color(0.39607844, 0.24313726, 0.32156864, 1)
+
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(400, 0)
 autoscroll = Vector2(-4, 0)
-repeat_times = 8
+repeat_times = 11
 
 [node name="BackgroundLayer1" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(200, 524.00006)
@@ -501,7 +508,7 @@ texture = ExtResource("1_e38qh")
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 repeat_size = Vector2(400, 0)
 autoscroll = Vector2(6, 0)
-repeat_times = 9
+repeat_times = 11
 
 [node name="BackgroundLayer2" type="Sprite2D" parent="Parallax2D2"]
 position = Vector2(200, 524)
@@ -511,7 +518,7 @@ texture = ExtResource("2_wxb1b")
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 repeat_size = Vector2(400, 0)
 autoscroll = Vector2(-8, 0)
-repeat_times = 10
+repeat_times = 11
 
 [node name="BackgroundLayer3" type="Sprite2D" parent="Parallax2D3"]
 position = Vector2(200, 524)

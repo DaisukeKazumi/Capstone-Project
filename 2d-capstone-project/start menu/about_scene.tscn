@@ -99,11 +99,17 @@ theme_override_fonts/font = ExtResource("5_xug04")
 theme_override_font_sizes/font_size = 45
 text = "IMPORTANT CONTROLS:
 - A/D keys to move left/right (double press to speed up)
-- left/right arrow keys to move left/right
+- left/right arrow keys to move left/right (double press to speed up)
 - space bar to jump (can double jump by pressing space bar twice)
 - E key to interact with world characters
 - double finger press/right mouse button to teleport
-- "
+
+GAME OBJECTIVE:
+You are a cloaked figure with no recollection of the past. Your goal is to
+traverse through the different locations of the world you find yourself 
+in, and help the people with tasks they might have as you learn more
+about them, the world, and yourself. Make it through all the locations
+and maybe you will learn of your past..."
 
 [node name="go_back" type="Button" parent="."]
 texture_filter = 1

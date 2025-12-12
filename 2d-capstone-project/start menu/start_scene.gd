@@ -15,7 +15,7 @@ func _on_play_pressed() -> void:
 	$CanvasLayer/ColorRect.visible = true
 	$CanvasLayer/AnimationPlayer.play("fade_to_black")
 	await $CanvasLayer/AnimationPlayer.animation_finished
-	get_tree().change_scene_to_file('res://Level 2 Assets/Level2.tscn')
+	get_tree().change_scene_to_file('res://Level 1 Assests/Level1.tscn')
 
 
 func _on_quit_pressed() -> void:

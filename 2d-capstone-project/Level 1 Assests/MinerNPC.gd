@@ -3,8 +3,8 @@ extends "res://Code/QuestGiverBase.gd"
 # --- Miner-specific dialogue pools ---
 var intro_dialogues: Array[String] = [
 	"Hey there… who are you? You look lost in these caves.",
-	"You don’t remember? Strange… you remind me of someone I once knew.",
-	"Your father used to work these mines with me. He was a good man."
+	"You don’t remember? Strange… you remind me of someone I once knew."
+	#"Your father used to work these mines with me. He was a good man."
 ]
 
 # Expanded quest explanation (step through these one by one)
