@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cr0gt5aufegbf"]
+[gd_scene load_steps=19 format=4 uid="uid://cr0gt5aufegbf"]
 
 [ext_resource type="Texture2D" uid="uid://do4md33afoqh4" path="res://level 3/oak_woods_v1.0/parallax background/background_layer_1.png" id="1_e38qh"]
 [ext_resource type="Texture2D" uid="uid://dgusqhgd7vb0k" path="res://level 3/oak_woods_v1.0/parallax background/background_layer_2.png" id="2_wxb1b"]
@@ -490,6 +490,9 @@ texture = ExtResource("4_nd13s")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_me7ms")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rx40"]
+size = Vector2(32, 325)
+
 [node name="Node2D" type="Node2D" groups=["Player"]]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -520,6 +523,7 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_wxb1b")
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_offset = Vector2(1, 1)
 repeat_size = Vector2(400, 0)
 autoscroll = Vector2(-8, 0)
 repeat_times = 11
@@ -604,3 +608,15 @@ position = Vector2(459, 540)
 
 [node name="Rabbit5" parent="." instance=ExtResource("14_bjul3")]
 position = Vector2(914, 566)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(6, 538)
+shape = SubResource("RectangleShape2D_7rx40")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(2262, 591)
+shape = SubResource("RectangleShape2D_7rx40")
