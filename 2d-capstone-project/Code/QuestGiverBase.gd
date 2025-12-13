@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- NPC Info ---
-var npc_name: String = "Quest NPC"
+var npc_name: String = "NPC"
 
 # --- Quest State ---
 var quest_given: bool = false
