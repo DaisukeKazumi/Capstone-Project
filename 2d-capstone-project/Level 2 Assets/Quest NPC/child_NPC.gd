@@ -1,5 +1,10 @@
 extends "res://Code/QuestGiverBase.gd"
 
+func _ready() -> void:
+	npc_name = "Child"   # override parent’s default
+	super._ready()            
+
+
 # --- Child-specific dialogue pools ---
 var dialogue_intro: Array[String] = [
 	"Today is my birthday...",

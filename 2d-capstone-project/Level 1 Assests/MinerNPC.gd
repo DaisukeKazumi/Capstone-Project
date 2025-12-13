@@ -1,5 +1,10 @@
 extends "res://Code/QuestGiverBase.gd"
 
+func _ready() -> void:
+	npc_name = "Miner"
+	super._ready()
+
+
 # --- Miner-specific dialogue pools ---
 var intro_dialogues: Array[String] = [
 	"Hey there… who are you? You look lost in these caves.",

@@ -1,22 +1,23 @@
 extends CharacterBody2D
 
-var npc_name: String = "Cloaked NPC"
+var npc_name: String = "Mysterious Elder"
 
 # Dialogue sequence
 var dialogue_lines: Array[String] = [
-	"…You’ve come far, cloaked one. Few dare to seek the shadows of their own past.",
-	"I have watched from the edges of this broken world, waiting for the day you would return.",
+	"…You’ve come far, cloaked one. Few dare to walk into the shadows of their own past.",
+	"I have lingered at the edges of this broken world, waiting for the day you would return.",
 	"There was once a miner — strong, steadfast, his hands scarred by stone, yet his heart was gentle.",
-	"That miner was more than a worker. He was a guardian, chosen to protect the village from the darkness that stirs beneath the earth.",
+	"But he was more than a worker. He was a guardian, chosen to shield the village from the darkness beneath the earth.",
 	"And his child… you… were destined to inherit that mantle. A protector born not of chance, but of purpose.",
 	"The people trusted us, sang of our strength. Yet fear is a cruel poison. The elders whispered, doubting what they could not understand.",
-	"Then came the day of calamity. Shadows rose, and in the struggle, both father and child were cast away...",
-	"The village faltered. Without its guardians, the walls crumbled, the songs faded, and hope became ash.",
-	"Years turned to decades. The world grew colder, harsher. The protector became a myth, a story told to children who no longer believed.",
+	"Then came the force — unseen, merciless. It tore through the veil of our lives, casting both father and child into exile.",
+	"In our absence, the monsters rose. They poured from the caverns, clawing at the land, and the villagers’ hearts grew sour with despair.",
+	"The village faltered. Without its guardians, the walls crumbled, the songs faded, and hope turned to ash.",
+	"Years bled into decades. The world grew colder, harsher. The protector became a myth, a tale told to children who no longer believed.",
 	"But myths have a way of returning. And now… here you stand, cloaked and silent, carrying echoes of what was lost.",
 	"You wonder who you are. You wonder why the world feels both familiar and strange.",
 	"Look closely — the missing piece of the story is you. The protector who vanished. The child of the miner.",
-	"I am your father. I was cast into shadow as you were. I remember the day we disappeared… and the day the village began to die.",
+	"I am your father. I too was cast into shadow. I remember the day we were torn away… and the day the village began to die.",
 	"You are the story. You are the absence. And now, you are the return.",
 	"The world is broken because we were gone. But together, perhaps, it can be mended."
 ]
