@@ -4,15 +4,12 @@ func _ready() -> void:
 	npc_name = "Miner"
 	super._ready()
 
-
 # --- Miner-specific dialogue pools ---
 var intro_dialogues: Array[String] = [
 	"Hey there… who are you? You look lost in these caves.",
 	"You don’t remember? Strange… you remind me of someone I once knew."
-	#"Your father used to work these mines with me. He was a good man."
 ]
 
-# Expanded quest explanation (step through these one by one)
 var quest_dialogues: Array[String] = [
 	"Listen, I can help you out of here… but first, I need your help.",
 	"These tunnels are unstable, and I need sturdy rocks to shore up the passage.",
@@ -72,7 +69,12 @@ func _handle_dialogue() -> void:
 			_show_dialogue(completion_dialogue)
 			QuestManager.complete_quest(npc_name)
 
-			emit_signal("lead_player_out") 
+			# Delay the signal until after dialogue is shown
+			var timer := get_tree().create_timer(3.0)  # adjust duration to match how long you want text visible
+			timer.timeout.connect(func():
+				emit_signal("lead_player_out")
+				_clear_dialogue()
+			)
 		else:
 			var line = reminder_dialogues[randi() % reminder_dialogues.size()]
 			_show_dialogue(line)
