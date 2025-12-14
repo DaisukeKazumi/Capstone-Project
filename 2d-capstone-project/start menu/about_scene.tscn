@@ -91,10 +91,10 @@ theme_override_font_sizes/font_size = 75
 text = "GAME RULES/OBJECTIVES"
 
 [node name="description" type="Label" parent="."]
-offset_left = 21.0
-offset_top = 106.0
-offset_right = 334.0
-offset_bottom = 181.0
+offset_left = 20.0
+offset_top = 88.0
+offset_right = 1114.0
+offset_bottom = 631.0
 theme_override_fonts/font = ExtResource("5_xug04")
 theme_override_font_sizes/font_size = 45
 text = "IMPORTANT CONTROLS:
@@ -102,7 +102,8 @@ text = "IMPORTANT CONTROLS:
 - left/right arrow keys to move left/right (double press to run)
 - space bar to jump (can double jump by pressing space bar twice)
 - E key to interact with world characters
-- double finger press/right mouse button to teleport
+- double finger click/right mouse button to teleport
+- left click to deal damage
 
 GAME OBJECTIVE:
 You are a cloaked figure with no recollection of the past. Your goal is to

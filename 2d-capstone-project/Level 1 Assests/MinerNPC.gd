@@ -83,6 +83,7 @@ func _handle_dialogue() -> void:
 	# 5. After completion (player comes back later)
 	if quest_completed:
 		_show_dialogue(completion_dialogue)
+		SceneTransition.change_scene('res://Level 1 Assests/Level1_cutscene.tscn')
 	else:
 		_show_dialogue(idle_dialogue)
 

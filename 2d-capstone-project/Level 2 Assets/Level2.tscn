@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dhsul5sfc1ybv"]
+[gd_scene load_steps=26 format=4 uid="uid://dhsul5sfc1ybv"]
 
 [ext_resource type="Texture2D" uid="uid://bdlmvtssjxsv0" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Chest Animation.png" id="1_rourq"]
 [ext_resource type="PackedScene" uid="uid://cvhym3rorbnl6" path="res://Player Assests/Player.tscn" id="1_wv84o"]
@@ -3458,6 +3458,9 @@ sources/3 = SubResource("TileSetAtlasSource_fwjr0")
 sources/4 = SubResource("TileSetAtlasSource_4o6u6")
 sources/5 = SubResource("TileSetAtlasSource_nwfyb")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvq3r"]
+size = Vector2(40, 595)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -3529,10 +3532,22 @@ position = Vector2(165, 564)
 position = Vector2(1644, 502)
 
 [node name="Goblin" parent="." instance=ExtResource("18_yxfq8")]
-position = Vector2(1242, 536)
+position = Vector2(1776, 560)
 
 [node name="Goblin2" parent="." instance=ExtResource("18_yxfq8")]
-position = Vector2(1487, 547)
+position = Vector2(3252, 555)
 
 [node name="Villager2" parent="." instance=ExtResource("15_dxy1p")]
 position = Vector2(443, 540)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-292, 397)
+shape = SubResource("RectangleShape2D_qvq3r")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(4163, 499)
+shape = SubResource("RectangleShape2D_qvq3r")

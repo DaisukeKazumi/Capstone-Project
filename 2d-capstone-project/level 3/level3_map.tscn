@@ -597,9 +597,6 @@ position = Vector2(584, 618)
 [node name="Rabbit1" parent="." instance=ExtResource("15_wsavc")]
 position = Vector2(647, 600)
 
-[node name="Rabbit2" parent="." instance=ExtResource("14_bjul3")]
-position = Vector2(724, 587)
-
 [node name="Rabbit3" parent="." instance=ExtResource("14_bjul3")]
 position = Vector2(798, 582)
 

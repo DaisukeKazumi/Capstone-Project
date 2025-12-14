@@ -4861,34 +4861,6 @@ sources/0 = SubResource("TileSetAtlasSource_ukwye")
 sources/1 = SubResource("TileSetAtlasSource_kq6cg")
 sources/2 = SubResource("TileSetAtlasSource_peo8p")
 
-[sub_resource type="Animation" id="Animation_6f0s2"]
-resource_name = "cut_scene"
-length = 17.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3.0002239, 3.9999762, 5, 6, 7, 8, 9, 10, 11, 11.5, 12, 13, 14, 15, 16, 17),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(328, 53311), Vector2(397, 53256), Vector2(442, 53263), Vector2(467, 53213), Vector2(529, 53215), Vector2(526, 53166), Vector2(463, 53167), Vector2(366, 53151), Vector2(388, 53103), Vector2(523, 53103), Vector2(600, 53079), Vector2(691, 53071), Vector2(715, 53071), Vector2(775, 53103), Vector2(880, 53071), Vector2(1068, 53071), Vector2(1294.0005, 53070), Vector2(1563, 53069), Vector2(1669, 53040)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MinerNpc:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.0005593, 2.0000112, 2.9999955, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.5, 13, 14, 14.5, 16),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(352, 53298), Vector2(423, 53244), Vector2(468, 53251), Vector2(492, 53200), Vector2(550, 53203), Vector2(509, 53149), Vector2(430, 53155), Vector2(387, 53139), Vector2(413, 53089), Vector2(546, 53091), Vector2(618, 53059), Vector2(711, 53059), Vector2(807, 53091), Vector2(837, 53075), Vector2(906, 53058), Vector2(1101, 53058), Vector2(1328, 53057), Vector2(1594.999, 53056.004)]
-}
-
 [sub_resource type="Animation" id="Animation_cel4o"]
 length = 0.001
 tracks/0/type = "value"
@@ -4914,6 +4886,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(352, 53298)]
+}
+
+[sub_resource type="Animation" id="Animation_6f0s2"]
+resource_name = "cut_scene"
+length = 17.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.0002239, 3.9999762, 5, 6, 7, 8, 9, 10, 11, 11.5, 12, 13, 14, 15, 16, 17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(328, 53311), Vector2(397, 53256), Vector2(442, 53263), Vector2(467, 53213), Vector2(529, 53215), Vector2(526, 53166), Vector2(463, 53167), Vector2(366, 53151), Vector2(388, 53103), Vector2(523, 53103), Vector2(600, 53079), Vector2(691, 53071), Vector2(715, 53071), Vector2(775, 53103), Vector2(880, 53071), Vector2(1068, 53071), Vector2(1294.0005, 53070), Vector2(1563, 53069), Vector2(1669, 53040)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MinerNpc:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0005593, 2.0000112, 2.9999955, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.5, 13, 14, 15, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(352, 53298), Vector2(423, 53244), Vector2(468, 53251), Vector2(492, 53200), Vector2(550, 53203), Vector2(509, 53149), Vector2(430, 53155), Vector2(387, 53139), Vector2(413, 53089), Vector2(546, 53091), Vector2(618, 53059), Vector2(711, 53059), Vector2(807, 53091), Vector2(837, 53075), Vector2(906, 53058), Vector2(1101, 53058), Vector2(1328, 53057), Vector2(1594.999, 53056.004)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rrp4s"]
