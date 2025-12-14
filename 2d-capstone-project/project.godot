@@ -22,6 +22,7 @@ DialogueBox="*res://Player Assests/DialogueBox.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 QuestManager="*res://Code/QuestManager.gd"
 GameBgMusic="*res://game_bg_music.tscn"
+SceneTransition="*res://scene_transition.tscn"
 
 [dialogue_manager]
 
