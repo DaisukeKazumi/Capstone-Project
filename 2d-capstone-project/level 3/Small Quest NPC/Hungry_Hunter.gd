@@ -7,6 +7,8 @@ var quest_completed: bool = false
 var player_in_range: bool = false
 var is_interacting: bool = false
 
+var can_advance_dialogue := false
+
 var dialogue_lines: Array = []
 var current_line: int = 0
 
@@ -40,14 +42,23 @@ func _on_body_exited(body: Node) -> void:
 		current_line = 0
 
 func _process(delta: float) -> void:
-	if player_in_range and Input.is_action_just_pressed("interact"):
+	#if player_in_range and Input.is_action_just_pressed("interact"):
+	#	if not is_interacting:
+	#		start_dialogue()
+	#	else:
+	#		next_line()
+	if not player_in_range:
+		return
+
+	if Input.is_action_just_pressed("interact"):
 		if not is_interacting:
 			start_dialogue()
-		else:
+		elif can_advance_dialogue:
 			next_line()
 
 func start_dialogue() -> void:
 	is_interacting = true
+	can_advance_dialogue = false   # 👈 lock advancing
 	anim.play("Idle")
 
 	var player = get_tree().get_nodes_in_group("Player")[0]
@@ -71,14 +82,20 @@ func start_dialogue() -> void:
 			]
 		elif rabbits_caught >= rabbits_required:
 			quest_completed = true
+			await get_tree().process_frame
 			dialogue_lines = [
 				"You’ve done it… these rabbits will keep me alive this winter.",
-				"In return, I give you this half picture I found.",
+				"In return, I give you this picture I found.",
 				"Strange, isn’t it? The figure wears a cloak… much like yours.",
 				"But it is larger, older… perhaps a shadow of who you truly are."
 			]
 			Globals.add_item("Half Picture")
-			emit_signal("quest_rewarded")
+			#emit_signal("quest_rewarded")
+			#await get_tree().process_frame
+			#await get_tree().create_timer(2.0).timeout
+			$"../Sprite2D".visible = true
+			#await get_tree().create_timer(8.0).timeout
+			#$"../Sprite2D".visible = false
 	else:
 		dialogue_lines = [
 			"Thank you again. This picture… it feels important."
@@ -86,6 +103,10 @@ func start_dialogue() -> void:
 
 	current_line = 0
 	show_line()
+	
+	# 👇 allow advancing NEXT frame
+	await get_tree().process_frame
+	can_advance_dialogue = true
 
 func next_line() -> void:
 	current_line += 1

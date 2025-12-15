@@ -74,8 +74,10 @@ func _handle_dialogue() -> void:
 		if after_index < dialogue_after_quest.size():
 			_show_dialogue(dialogue_after_quest[after_index])
 			after_index += 1
+			#SceneTransition.change_scene('res://level 3/level3_map.tscn')
 		else:
 			_show_dialogue(idle_dialogue)
+			SceneTransition.change_scene('res://level 3/level3_map.tscn')
 
 # --- Helpers ---
 func _show_dialogue_array(lines: Array[String]) -> void:

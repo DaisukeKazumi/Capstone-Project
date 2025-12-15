@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://nafc3ec8rm7i"]
+[gd_scene load_steps=13 format=3 uid="uid://nafc3ec8rm7i"]
 
 [ext_resource type="Texture2D" uid="uid://c2cyrr8cp85sq" path="res://Assets/Medieval Warrior (Version 1.2)/Medieval Warrior Pack/Medieval Warrior Pack/Idle.png" id="1_60b4k"]
 [ext_resource type="Script" uid="uid://ccehf1403wnrh" path="res://level 3/Small Quest NPC/Hungry_Hunter.gd" id="1_t3plr"]
+[ext_resource type="Texture2D" uid="uid://de08r1o54xm7s" path="res://level 3/picture.png" id="3_7ejob"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3plr"]
 atlas = ExtResource("1_60b4k")
@@ -86,3 +87,9 @@ position = Vector2(-3.9318008, 8.99468)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 position = Vector2(3, -5)
 shape = SubResource("CircleShape2D_xnjh1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.9073486e-06, -126.000015)
+scale = Vector2(0.13374354, 0.13374357)
+texture = ExtResource("3_7ejob")

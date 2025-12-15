@@ -74,3 +74,4 @@ func end_dialogue() -> void:
 	interaction_timer.start()
 	# Here you can trigger the quest item reveal (half picture)
 	emit_signal("quest_revealed")  # optional custom signal
+	SceneTransition.change_scene('res://level 3/the_end.tscn')
